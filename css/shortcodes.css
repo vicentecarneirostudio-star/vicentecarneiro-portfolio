@@ -2793,6 +2793,25 @@
 	#team-panels .panels-container .panel:last-child .panel-content-wrapper {
   		padding-right:20px;
 	}
-	
+
+}
+
+/* ---- Full-width middle video ---- */
+.hero-video-section {
+	width: 100%;
+	overflow: hidden;
+}
+
+.hero-video-wrapper-middle {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+
+.hero-video-wrapper-middle video.bgvid-middle {
+	width: 100%;
+	height: auto;
+	display: block;
+}
 		
 }
