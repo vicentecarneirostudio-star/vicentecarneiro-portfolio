@@ -1,7 +1,8 @@
-const $tiempo=document.querySelector('.tiempo'),
-$fecha= document.querySelector('.fecha');
-
 function Relojdigital(){
+    let $tiempo=document.querySelector('.tiempo'),
+    $fecha= document.querySelector('.fecha');
+    if(!$tiempo || !$fecha) return;
+
     let f=new Date(),
     dia= f.getDate(),
     mes= f.getMonth()+1,
@@ -13,12 +14,19 @@ function Relojdigital(){
 
     let timeString= f.toLocaleTimeString();
     $tiempo.innerHTML=timeString;
+    $tiempo.style.opacity='1';
+    $tiempo.style.visibility='visible';
 
     let semana=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     let showSemana= (semana[diaSemana])
-    $fecha.innerHTML = `${showSemana} ${dia}.${mes}.${anio}`
+    $fecha.innerHTML = `${showSemana} ${dia}.${mes}.${anio}`;
+    $fecha.style.opacity='1';
+    $fecha.style.visibility='visible';
 }
-Relojdigital();
-setInterval(() =>{
-    Relojdigital()
-},1000);
+
+window.addEventListener('load', function(){
+    setTimeout(function(){
+        Relojdigital();
+        setInterval(Relojdigital, 1000);
+    }, 500);
+});
