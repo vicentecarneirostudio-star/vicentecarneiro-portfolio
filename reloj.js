@@ -18,6 +18,7 @@ function Relojdigital(){
     let showSemana= (semana[diaSemana])
     $fecha.innerHTML = `${showSemana} ${dia}.${mes}.${anio}`
 }
+Relojdigital();
 setInterval(() =>{
     Relojdigital()
 },1000);
