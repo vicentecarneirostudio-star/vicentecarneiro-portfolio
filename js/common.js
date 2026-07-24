@@ -1682,85 +1682,9 @@ Function FitThumbScreen GSAP
 				
 				function addListeners(tile, page, url) {
 				  
-					url.addEventListener("click", function() {				
-						let parent_item = $(this).closest( '.trigger-item' );
-						parent_item.addClass('above');
-						gsap.to(parent_item.find(".item-parallax.enabled .item-wrap-image"), {duration: 0.4, y:0, ease:Power1.easeOut});
-						
-						if (!$('body').hasClass("hero-below-caption")) {
-						if (!$('#page-content').hasClass("light-content")) {
-							
-							if (!$('.portfolio').hasClass("portfolio-shortcode")) {
-								if (!parent_item.hasClass("change-header")) {
-									$('#page-content').delay(1200).queue(function(next){							
-										$(this).addClass('light-content');
-										next();
-									});
-								}								
-							} else {
-								alert("shortcode");
-								if (!parent_item.hasClass("change-header")) {
-									$('#page-content').delay(1200).queue(function(next){							
-										$(this).removeClass('light-content');
-										next();
-									});
-								}
-							}													
-						} else {							
-							if (!$('.portfolio').hasClass("portfolio-shortcode")) {
-								if (parent_item.hasClass("change-header")) {
-									$('#page-content').delay(1200).queue(function(next){							
-										$(this).removeClass('light-content');
-										next();
-									});
-								}
-							} else {
-								if (!parent_item.hasClass("change-header")) {
-									$('#page-content').delay(1200).queue(function(next){							
-										$(this).removeClass('light-content');
-										next();
-									});
-								}
-								
-							}							
-						}
-					}
-						
-						gsap.to('#ball', {duration: 0.2, borderWidth: '4px', scale:0.5, borderColor:'#999999', backgroundColor:'transparent', opacity:1});
-						gsap.to('#ball-loader', {duration: 0.2, borderWidth: '4px', top: 0, left: 0});
-						$("#ball").removeClass("with-icon");
-						$('#ball p').remove();
-						$('#ball i').remove();
-						$("body").addClass("show-loader").addClass("load-project-thumb");
-						
-						gsap.to('#hero, #show-filters, .item, .item-caption-wrapper, #page-nav, footer, .fadeout-element, .sr-slide', {duration: 0.3, opacity: 0, delay:0, ease:Power2.easeIn});
-						
-						gsap.to($("#showcase-carousel .swiper-slide .inner"), {duration: 0.3, force3D:true, delay:0, opacity:0, ease:Power3.easeInOut  });					
-						$('#showcase-carousel .swiper-slide').each(function(){
-							if (!$(this).hasClass("above")) {
-								gsap.to($(this), {duration: 0.5, delay:0, opacity:0, ease:Power4.easeInOut});
-							} else  {
-								gsap.to($(this), {duration: 0.5, delay:0.4, opacity:0, ease:Power4.easeInOut});	
-							}
-						});
-						
-						$('.showcase-list-holder').removeClass("loaded");						
-						var SlideListTitle = gsap.timeline();					
-						$(".sl-title span").each(function(index, element) {
-							SlideListTitle.to(element, {duration: 0.5, force3D:true, y:-80, opacity:0, delay:0, ease:Power2.easeInOut}, index * 0)
-						});				
-						var SlideListSubtitle = gsap.timeline();					
-						$(".sl-subtitle span").each(function(index, element) {
-							SlideListSubtitle.to(element, {duration: 0.5, force3D:true, y:-30, opacity:0, delay:0, ease:Power2.easeInOut}, index * 0)
-						});					
-						gsap.to('.slide-list', {duration: 0.5, opacity:0, ease:Power4.easeInOut});	
-						
-						setTimeout( function(){											
-							animateHero(tile, page);
-						} , 750 ); 
-						setTimeout(function(){
-							$(".above").find('a').trigger('click');
-						} , 1200 );
+					url.addEventListener("click", function() {
+						var href = $(this).closest('.trigger-item').find('a[data-type="page-transition"]').attr('href');
+						if (href) { window.location.href = href; }
 					});
 				  
 					page.addEventListener("click", function() {
@@ -2962,11 +2886,7 @@ Function Core
 			  //trigger smooth transition from the actual page to the new one 
 			  $('main').on('click', '[data-type="page-transition"]', function(event){
 				event.preventDefault();
-				//detect which page has been selected
-				var newPage = $(this).attr('href');
-				//if the page is not already being animated - trigger animation
-				if( !isAnimating ) changePage(newPage, true);
-				firstLoad = true;
+				window.location.href = $(this).attr('href');
 			  });
 			
 			  //detect the 'popstate' event - e.g. user clicking the back button
