@@ -1755,9 +1755,11 @@ Function FitThumbScreen GSAP
 						});					
 						gsap.to('.slide-list', {duration: 0.5, opacity:0, ease:Power4.easeInOut});	
 						
-						setTimeout( function(){											
-							animateHero(tile, page);
-						} , 750 ); 
+						setTimeout( function(){
+							if (!parent_item.hasClass('no-morph')) {
+								animateHero(tile, page);
+							}
+						} , 750 );
 						setTimeout(function(){
 							$(".above").find('a').trigger('click');
 						} , 1200 );
