@@ -1684,11 +1684,6 @@ Function FitThumbScreen GSAP
 				  
 					url.addEventListener("click", function() {				
 						let parent_item = $(this).closest( '.trigger-item' );
-						if (parent_item.hasClass('no-morph')) {
-							var href = parent_item.find('a.ajax-link-project').attr('href');
-							window.location.href = href;
-							return;
-						}
 						parent_item.addClass('above');
 						gsap.to(parent_item.find(".item-parallax.enabled .item-wrap-image"), {duration: 0.4, y:0, ease:Power1.easeOut});
 						
@@ -1760,11 +1755,9 @@ Function FitThumbScreen GSAP
 						});					
 						gsap.to('.slide-list', {duration: 0.5, opacity:0, ease:Power4.easeInOut});	
 						
-						setTimeout( function(){
-							if (!parent_item.hasClass('no-morph')) {
-								animateHero(tile, page);
-							}
-						} , 750 );
+						setTimeout( function(){											
+							animateHero(tile, page);
+						} , 750 ); 
 						setTimeout(function(){
 							$(".above").find('a').trigger('click');
 						} , 1200 );
