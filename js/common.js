@@ -1684,6 +1684,10 @@ Function FitThumbScreen GSAP
 				  
 					url.addEventListener("click", function() {				
 						let parent_item = $(this).closest( '.trigger-item' );
+						if (parent_item.hasClass('no-morph')) {
+							parent_item.find('a.ajax-link-project').trigger('click');
+							return;
+						}
 						parent_item.addClass('above');
 						gsap.to(parent_item.find(".item-parallax.enabled .item-wrap-image"), {duration: 0.4, y:0, ease:Power1.easeOut});
 						
