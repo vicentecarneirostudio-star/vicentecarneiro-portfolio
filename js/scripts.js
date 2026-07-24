@@ -68,6 +68,14 @@ Function Page Load
 		
 		function initOnFirstLoad() {
 		
+			if ($('body').hasClass('no-open-animation')) {
+				$('.preloader-wrap').hide();
+				gsap.set(['#main-page-content', '#page-nav'], {opacity:1});
+				$('body').removeClass('show-loader').addClass('header-visible');
+				ScrollTrigger.refresh();
+				return;
+			}
+		
 			$('body').waitForImages({
 				finished: function() {
 					gsap.to('#ball', {duration: 0.2, borderWidth: '4px', scale:0.5, borderColor:'#999999', backgroundColor:'transparent'});
