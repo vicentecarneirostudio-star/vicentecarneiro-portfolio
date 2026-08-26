@@ -1005,9 +1005,10 @@ Function First Load
 					} else {
 						if( $('#blog').length > 0 ){
 							$("header").css('background-color', '#171717');
-						}
-						if( $('#post').length > 0 ){
+						} else if( $('#post').length > 0 ){
 							$("header").css('background-color', '#171717');
+						} else {
+							$("header").css('background-color', 'transparent');
 						}
 					}
 				}
@@ -1031,9 +1032,10 @@ Function First Load
 					} else {
 						if( $('#blog').length > 0 ){
 							$("header").css('background-color', '#fff');
-						}
-						if( $('#post').length > 0 ){
+						} else if( $('#post').length > 0 ){
 							$("header").css('background-color', '#fff');
+						} else {
+							$("header").css('background-color', 'transparent');
 						}
 					}
 				}
