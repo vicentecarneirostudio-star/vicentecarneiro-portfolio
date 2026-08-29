@@ -276,10 +276,15 @@ class GridToFullscreenEffect {
       });
     }
 
-    for (let i = 0; i < this.itemsWrapperChildren.length; i++) {
-      const image = this.itemsWrapperChildren[i].children[0];
-      image.addEventListener("mousedown", this.createOnMouseDown(i));
-    }
+    // Disabled: the WebGL grid-to-fullscreen zoom on mousedown conflicted
+    // with the AJAX project navigation (got stuck mid-animation, showing a
+    // warped thumbnail on top of the destination page). Navigation itself
+    // is triggered separately (via .trigger-item-link click in common.js)
+    // and is unaffected by this.
+    // for (let i = 0; i < this.itemsWrapperChildren.length; i++) {
+    //   const image = this.itemsWrapperChildren[i].children[0];
+    //   image.addEventListener("mousedown", this.createOnMouseDown(i));
+    // }
   }
   /**
     Creates a listener that sends item to fullscreen when activated. 

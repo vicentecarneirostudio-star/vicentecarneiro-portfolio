@@ -1487,15 +1487,17 @@ Function FitThumbScreen WEBGL
 					}
 										
 					transitionEffect.init();
-					
-					if( $('#itemsWrapperLinks').length > 0 ){
-						
-						const itemsCaptions = document.getElementById("itemsWrapperLinks");
-						const thumbsLink = [...itemsCaptions.querySelectorAll(".trigger-item-link")];
-						for( let idxCaption = 0; idxCaption < thumbsLink.length; idxCaption++){						
-							thumbsLink[idxCaption].addEventListener( "mousedown", transitionEffect.createOnMouseDown( idxCaption ) );
-						}
-					}
+
+					// Disabled: redundant mousedown trigger for the WebGL
+					// fullscreen zoom (see plugins.js). Left in for texture
+					// index reference only, not attaching listeners anymore.
+					// if( $('#itemsWrapperLinks').length > 0 ){
+					// 	const itemsCaptions = document.getElementById("itemsWrapperLinks");
+					// 	const thumbsLink = [...itemsCaptions.querySelectorAll(".trigger-item-link")];
+					// 	for( let idxCaption = 0; idxCaption < thumbsLink.length; idxCaption++){
+					// 		thumbsLink[idxCaption].addEventListener( "mousedown", transitionEffect.createOnMouseDown( idxCaption ) );
+					// 	}
+					// }
 					
 					const toggleFullview = () => {
 						if ( transitionEffect.isFullscreen ) {							
