@@ -644,7 +644,7 @@ Function Lazy Load
 		
 		
 		if( $('.load-project-thumb').length > 0 ){
-			$('#hero-image-wrapper').waitForImages({
+			($('#hero-image-wrapper').length ? $('#hero-image-wrapper') : $('body')).waitForImages({
 				finished: function() {
 					setTimeout( function(){
 						$('#hero-image-wrapper').find('video').each(function() {
@@ -658,7 +658,7 @@ Function Lazy Load
 				waitForAll: true
 			});
 		} else if( $('.load-project-thumb-with-title').length > 0 ){
-			$('#hero-image-wrapper').waitForImages({
+			($('#hero-image-wrapper').length ? $('#hero-image-wrapper') : $('body')).waitForImages({
 				finished: function() {
 					setTimeout( function(){
 						$('#hero-image-wrapper').find('video').each(function() {
@@ -681,7 +681,7 @@ Function Lazy Load
 				waitForAll: true
 			});			
 		} else if( $('.load-project-thumb-with-title-and-scale').length > 0 ){
-			$('#hero-image-wrapper').waitForImages({
+			($('#hero-image-wrapper').length ? $('#hero-image-wrapper') : $('body')).waitForImages({
 				finished: function() {
 					setTimeout( function(){
 						$('#hero-image-wrapper').find('video').each(function() {
@@ -700,7 +700,7 @@ Function Lazy Load
 				waitForAll: true
 			});	
 		} else {
-			$('#hero-image-wrapper').waitForImages({
+			($('#hero-image-wrapper').length ? $('#hero-image-wrapper') : $('body')).waitForImages({
 				finished: function() {
 					setTimeout( function(){
 						$('#hero-image-wrapper').find('video').each(function() {
