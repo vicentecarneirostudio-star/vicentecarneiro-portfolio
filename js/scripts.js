@@ -71,6 +71,18 @@ Function Page Load
 			if ($('body').hasClass('no-open-animation')) {
 				$('.preloader-wrap').hide();
 				gsap.set(['#main-page-content', '#page-nav'], {opacity:1});
+				gsap.set('#main', {opacity:1});
+				gsap.set('#hero-bg-image', {opacity:1, scale:1});
+				gsap.set('.hero-title span', {opacity:1, y:0});
+				gsap.set('.hero-subtitle span', {opacity:1, y:0});
+				gsap.set('.hero-arrow', {opacity:1, y:-60});
+				gsap.set('.hero-footer-left, .hero-footer-right', {opacity:1, y:0, rotation:0});
+				gsap.set('.error-button', {opacity:1, y:0, rotation:0});
+				if ($('body').hasClass('hero-below-caption')) {
+					var heroTranslate = $('.hero-translate').height();
+					gsap.set($("#hero-image-wrapper"), {y:heroTranslate});
+					gsap.set($("#hero-caption"), {height:heroTranslate});
+				}
 				$('body').removeClass('show-loader').addClass('header-visible');
 				ScrollTrigger.refresh();
 				return;
