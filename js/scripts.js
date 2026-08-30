@@ -83,6 +83,11 @@ Function Page Load
 					gsap.set($("#hero-image-wrapper"), {y:heroTranslate});
 					gsap.set($("#hero-caption"), {height:heroTranslate});
 				}
+				if( $('.hero-video-wrapper').length > 0 ){
+					$('#hero-image-wrapper').find('video').each(function() {
+						$(this).get(0).play();
+					});
+				}
 				$('body').removeClass('show-loader').addClass('header-visible');
 				ScrollTrigger.refresh();
 				return;
