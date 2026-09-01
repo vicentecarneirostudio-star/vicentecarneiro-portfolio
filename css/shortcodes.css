@@ -585,7 +585,29 @@
 		transform: translateX(-50%) translateY(-50%);
 	  	background-size: cover;
 	}
-	
+
+	/* On narrow/tall screens, cropping a landscape video/image to cover a
+	   full-height section zooms in too aggressively. Show the full frame
+	   instead (letterboxed) rather than an extreme crop. */
+	@media (max-width: 1023px) {
+		#hero-bg-image .hero-video-wrapper video.bgvid {
+			top: 0;
+			left: 0;
+			min-width: 0;
+			min-height: 0;
+			width: 100%;
+			height: 100%;
+			transform: none;
+			object-fit: contain;
+			background-color: #000;
+		}
+
+		.has-parallax-content > img, figure.has-parallax > img {
+			object-fit: contain !important;
+			background-color: #000;
+		}
+	}
+
 	.video-wrapper {
 		position: relative;
     	box-sizing: border-box;
@@ -1024,17 +1046,6 @@
 	
 	.has-animation.has-cover.animated::after {
 		width:0;
-	}
-
-	.has-parallax {
-		width: 100%;
-		overflow: hidden;
-	}
-
-	.has-parallax img {
-		width: 100%;
-		height: auto;
-		display: block;
 	}
 	
 	.has-animation.has-cover img {
