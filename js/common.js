@@ -1169,10 +1169,7 @@ Function First Load
 		});
 		
 		
-		var viewportWidth = $(window).width();
-		if (viewportWidth < 1024) {				
-			$('.hero-video-wrapper').remove();							 
-		}
+		// Hero video wrapper is now kept on all screen sizes, including mobile.
 		
 		$('.wpcf7-form-control-wrap').each( function() {			
 			if( $( this ).has('label').length <= 0 ){
