@@ -92,6 +92,14 @@ Function Page Load
 						} else {
 							vid.addEventListener('canplay', tryPlay, {once:true});
 						}
+						// Chrome pauses large muted background videos after a few
+						// seconds to save power. Resume it automatically as long as
+						// we're still on this page and it's visible.
+						vid.addEventListener('pause', function(){
+							if (document.visibilityState === 'visible' && !document.body.classList.contains('page-is-changing')) {
+								tryPlay();
+							}
+						});
 					});
 				}
 				$('body').removeClass('show-loader').addClass('header-visible');
