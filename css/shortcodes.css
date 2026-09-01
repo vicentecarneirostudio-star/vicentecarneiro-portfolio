@@ -554,7 +554,23 @@
 		top: 0;
 		z-index: 120;
 		pointer-events: none;
-	
+
+	}
+
+	#hero-bg-image .hero-video-wrapper {
+		position: absolute;
+		box-sizing: border-box;
+		min-width: 100%;
+		min-height: 100%;
+		width: 100%;
+		height: auto;
+		background-size: cover;
+		padding: 0;
+		overflow: hidden !important;
+		opacity: 1;
+		top: 0;
+		z-index: 0;
+		pointer-events: none;
 	}
 	
 	.hero-video-wrapper video.bgvid {
@@ -1008,6 +1024,17 @@
 	
 	.has-animation.has-cover.animated::after {
 		width:0;
+	}
+
+	.has-parallax {
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.has-parallax img {
+		width: 100%;
+		height: auto;
+		display: block;
 	}
 	
 	.has-animation.has-cover img {

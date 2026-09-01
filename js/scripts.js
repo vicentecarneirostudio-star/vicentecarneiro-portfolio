@@ -85,7 +85,13 @@ Function Page Load
 				}
 				if( $('.hero-video-wrapper').length > 0 ){
 					$('#hero-image-wrapper').find('video').each(function() {
-						$(this).get(0).play();
+						var vid = this;
+						var tryPlay = function(){ vid.play().catch(function(){}); };
+						if (vid.readyState >= 3) {
+							tryPlay();
+						} else {
+							vid.addEventListener('canplay', tryPlay, {once:true});
+						}
 					});
 				}
 				$('body').removeClass('show-loader').addClass('header-visible');
