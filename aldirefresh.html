@@ -60,6 +60,65 @@
   opacity: 1 !important;
 }
 .preloader-wrap { display: none !important; }
+
+/* Results stat cards */
+.results-stats {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.result-card {
+    flex: 1 1 280px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 36px 32px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+.result-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b6b6b;
+    margin-bottom: 14px;
+}
+.result-number {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+.result-delta {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 18px;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.05);
+}
+.result-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: #444;
+    margin-bottom: 22px;
+}
+.result-chart {
+    height: 44px;
+}
+.result-chart svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.result-card-cyan .result-number, .result-card-cyan .result-chart { color: #00B6ED; }
+.result-card-blue .result-number, .result-card-blue .result-chart { color: #202B78; }
+.result-card-red  .result-number, .result-card-red  .result-chart { color: #C51718; }
+@media (max-width: 767px) {
+    .results-stats { flex-direction: column; }
+}
 </style></head>
 <body class="hidden hidden-ball hero-below-caption smooth-scroll uppercase-text no-open-animation" data-primary-color="#d2b7fc">
 <main>
@@ -501,12 +560,47 @@ Through a unified design system and shared UX foundations, we aligned navigation
 
 <hr><hr>
 
-<div class="one_third">
-	<h5>The New Era of ALDI Begins</h5>
-</div>
+<div class="results-stats">
 
-<div class="two_third last">
-	<p class="has-indent">We explored a range of formats across ALDI's key platforms — app, web, tablet, and mobile — applying the new design system to bring the refreshed visual identity to life. Each format was adapted to its own context and interaction patterns, while staying rooted in a single, consistent design language that strengthened brand recognition across every touchpoint.</p>
+	<div class="result-card result-card-cyan">
+		<div class="result-label">App Engagement</div>
+		<div class="result-number">+51%</div>
+		<div class="result-delta">vs. 2024</div>
+		<div class="result-desc">Growth in app interactions and page views year over year — the app became the leading channel for digital growth.</div>
+		<div class="result-chart">
+			<svg viewBox="0 0 120 40" preserveAspectRatio="none">
+				<polyline points="0,35 20,30 40,28 60,20 80,14 100,8 120,2" fill="none" stroke="currentColor" stroke-width="3"/>
+			</svg>
+		</div>
+	</div>
+
+	<div class="result-card result-card-blue">
+		<div class="result-label">Return Visitors</div>
+		<div class="result-number">37.5%</div>
+		<div class="result-delta">+3.3 pts vs. 2024</div>
+		<div class="result-desc">Of users came back to the site, signaling stronger loyalty and engagement after the redesign.</div>
+		<div class="result-chart">
+			<svg viewBox="0 0 120 40" preserveAspectRatio="none">
+				<rect x="8" y="20" width="16" height="20" fill="currentColor" opacity="0.4"/>
+				<rect x="36" y="16" width="16" height="24" fill="currentColor" opacity="0.6"/>
+				<rect x="64" y="10" width="16" height="30" fill="currentColor" opacity="0.8"/>
+				<rect x="92" y="4" width="16" height="36" fill="currentColor"/>
+			</svg>
+		</div>
+	</div>
+
+	<div class="result-card result-card-red">
+		<div class="result-label">Total Interactions</div>
+		<div class="result-number">30M</div>
+		<div class="result-delta">+14% vs. 2024</div>
+		<div class="result-desc">Clicks and interactions across web and app, confirming deeper engagement from the refreshed experience.</div>
+		<div class="result-chart">
+			<svg viewBox="0 0 120 40" preserveAspectRatio="none">
+				<polyline points="0,30 30,26 60,22 90,12 120,6" fill="none" stroke="currentColor" stroke-width="3"/>
+				<circle cx="120" cy="6" r="4" fill="currentColor"/>
+			</svg>
+		</div>
+	</div>
 
 </div>
 
