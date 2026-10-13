@@ -57,78 +57,75 @@ Crossfade slider (jQuery). Markup: .planner-slider en aldiplanner.html
 			var $dots = $slider.find('.planner-slider-dots');
 			var total = $slides.length;
 			var current = 0;
-			var timer = null;
-			var delay = parseInt($slider.data('autoplay'), 10) || 5000;
-			var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			var stopped = false;
+			var delay = parseInt($slider.data('autoplay'), 10) || 3000;
 
 			if (total < 2) { return; }
+
+			// Duración de cada imagen (la barra de progreso del punto activo usa este valor)
+			$slider[0].style.setProperty('--planner-delay', delay + 'ms');
 
 			// Precargar y decodificar las imágenes para que el fundido no se retrase
 			$slides.find('img').each(function() {
 				if (this.decode) { this.decode().catch(function() {}); }
 			});
 
-			// Dots
+			// Puntos: visto / actual (con barra de progreso) / pendiente
 			$slides.each(function(i) {
-				$('<button type="button" class="planner-slider-dot"></button>')
+				$('<button type="button" class="planner-slider-dot"><span class="planner-slider-fill"></span></button>')
 					.attr('aria-label', 'Go to slide ' + (i + 1))
-					.toggleClass('is-active', i === 0)
-					.on('click', function() { goTo(i); restart(); })
+					.on('click', function() {
+						stopped = true;               // el usuario elige: la imagen se queda parada
+						$slider.addClass('is-stopped');
+						goTo(i);
+					})
 					.appendTo($dots);
 			});
 			var $dotBtns = $dots.children();
 
+			function render() {
+				$slides.removeClass('is-active').eq(current).addClass('is-active');
+				$dotBtns.each(function(i) {
+					$(this).toggleClass('is-active', i === current).toggleClass('is-done', i < current);
+				});
+			}
+
 			function goTo(n) {
-				n = (n + total) % total;
-				if (n === current) { return; }
-				$slides.eq(current).removeClass('is-active');
-				$dotBtns.eq(current).removeClass('is-active');
-				$slides.eq(n).addClass('is-active');
-				$dotBtns.eq(n).addClass('is-active');
-				current = n;
+				current = (n + total) % total;
+				render();
 			}
 
-			function stop() {
-				if (timer) { clearInterval(timer); timer = null; }
-			}
-
-			function start() {
-				if (reduceMotion || timer) { return; }
-				timer = setInterval(function() {
-					// la página fue reemplazada por la transición AJAX: parar
-					if (!$.contains(document.documentElement, $slider[0])) { stop(); return; }
-					goTo(current + 1);
-				}, delay);
-			}
-
-			function restart() { stop(); start(); }
-
-			// Flechas
-			$slider.find('.is-prev').on('click', function() { goTo(current - 1); restart(); });
-			$slider.find('.is-next').on('click', function() { goTo(current + 1); restart(); });
-
-			// Pausa al pasar el ratón / al cambiar de pestaña
-			$slider.on('mouseenter', stop).on('mouseleave', start);
-			$(document).on('visibilitychange', function() {
+			// Al terminar de llenarse la barra del punto activo, pasar a la siguiente imagen
+			$dots.on('animationend', '.planner-slider-fill', function() {
+				if (stopped) { return; }
 				if (!$.contains(document.documentElement, $slider[0])) { return; }
-				if (document.hidden) { stop(); } else { start(); }
+				goTo(current + 1);
 			});
 
-			// Deslizar con el dedo
+			// Pausa (barra incluida) al pasar el ratón y al cambiar de pestaña
+			$slider.on('mouseenter', function() { $slider.addClass('is-paused'); })
+				   .on('mouseleave', function() { $slider.removeClass('is-paused'); });
+			$(document).on('visibilitychange', function() {
+				if (!$.contains(document.documentElement, $slider[0])) { return; }
+				$slider.toggleClass('is-paused', document.hidden);
+			});
+
+			// Deslizar con el dedo (cuenta como elección del usuario)
 			var touchX = null;
 			$slider.on('touchstart', function(e) {
 				touchX = e.originalEvent.touches[0].clientX;
-				stop();
 			}).on('touchend', function(e) {
-				if (touchX !== null) {
-					var diff = e.originalEvent.changedTouches[0].clientX - touchX;
-					if (Math.abs(diff) > 40) { goTo(diff < 0 ? current + 1 : current - 1); }
-				}
+				if (touchX === null) { return; }
+				var diff = e.originalEvent.changedTouches[0].clientX - touchX;
 				touchX = null;
-				start();
+				if (Math.abs(diff) > 40) {
+					stopped = true;
+					$slider.addClass('is-stopped');
+					goTo(diff < 0 ? current + 1 : current - 1);
+				}
 			});
 
-			start();
+			render();
 		});
 
 	}// End PlannerSlider
