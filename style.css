@@ -4050,3 +4050,9 @@ Puntos: visto (oscuro) / actual (píldora con progreso) / pendiente (gris)
     .planner-slide.is-active { transform: none; transition-duration: .01s; }
     .planner-slider-dot.is-active .planner-slider-fill { animation: none; width: 100%; }
 }
+
+/* Hero sin imagen/vídeo de fondo (ej. aldiplanner.html): la plantilla reserva 100vh
+   debajo del título para la imagen; aquí no hay, así que se elimina ese espacio. */
+.hero-below-caption #hero.has-image.hero-no-image {
+    padding-bottom: 0 !important;
+}
