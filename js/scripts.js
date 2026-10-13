@@ -34,10 +34,104 @@ Function CustomFunction
 ---------------------------------------------------*/
 
 	function CustomFunction() {
-		
+
 		//Add here your custom js code
-		
-	}// End CustomFunction		
+		PlannerSlider();
+
+	}// End CustomFunction
+
+/*--------------------------------------------------
+Function PlannerSlider
+Crossfade slider (jQuery). Markup: .planner-slider en aldiplanner.html
+---------------------------------------------------*/
+
+	function PlannerSlider() {
+
+		$('.planner-slider').each(function() {
+
+			var $slider = $(this);
+			if ($slider.data('plannerReady')) { return; }
+			$slider.data('plannerReady', true);
+
+			var $slides = $slider.find('.planner-slide');
+			var $dots = $slider.find('.planner-slider-dots');
+			var total = $slides.length;
+			var current = 0;
+			var timer = null;
+			var delay = parseInt($slider.data('autoplay'), 10) || 5000;
+			var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+			if (total < 2) { return; }
+
+			// Precargar y decodificar las imágenes para que el fundido no se retrase
+			$slides.find('img').each(function() {
+				if (this.decode) { this.decode().catch(function() {}); }
+			});
+
+			// Dots
+			$slides.each(function(i) {
+				$('<button type="button" class="planner-slider-dot"></button>')
+					.attr('aria-label', 'Go to slide ' + (i + 1))
+					.toggleClass('is-active', i === 0)
+					.on('click', function() { goTo(i); restart(); })
+					.appendTo($dots);
+			});
+			var $dotBtns = $dots.children();
+
+			function goTo(n) {
+				n = (n + total) % total;
+				if (n === current) { return; }
+				$slides.eq(current).removeClass('is-active');
+				$dotBtns.eq(current).removeClass('is-active');
+				$slides.eq(n).addClass('is-active');
+				$dotBtns.eq(n).addClass('is-active');
+				current = n;
+			}
+
+			function stop() {
+				if (timer) { clearInterval(timer); timer = null; }
+			}
+
+			function start() {
+				if (reduceMotion || timer) { return; }
+				timer = setInterval(function() {
+					// la página fue reemplazada por la transición AJAX: parar
+					if (!$.contains(document.documentElement, $slider[0])) { stop(); return; }
+					goTo(current + 1);
+				}, delay);
+			}
+
+			function restart() { stop(); start(); }
+
+			// Flechas
+			$slider.find('.is-prev').on('click', function() { goTo(current - 1); restart(); });
+			$slider.find('.is-next').on('click', function() { goTo(current + 1); restart(); });
+
+			// Pausa al pasar el ratón / al cambiar de pestaña
+			$slider.on('mouseenter', stop).on('mouseleave', start);
+			$(document).on('visibilitychange', function() {
+				if (!$.contains(document.documentElement, $slider[0])) { return; }
+				if (document.hidden) { stop(); } else { start(); }
+			});
+
+			// Deslizar con el dedo
+			var touchX = null;
+			$slider.on('touchstart', function(e) {
+				touchX = e.originalEvent.touches[0].clientX;
+				stop();
+			}).on('touchend', function(e) {
+				if (touchX !== null) {
+					var diff = e.originalEvent.changedTouches[0].clientX - touchX;
+					if (Math.abs(diff) > 40) { goTo(diff < 0 ? current + 1 : current - 1); }
+				}
+				touchX = null;
+				start();
+			});
+
+			start();
+		});
+
+	}// End PlannerSlider
 
 /*--------------------------------------------------
 Function Page Load
