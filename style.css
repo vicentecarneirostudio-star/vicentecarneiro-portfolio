@@ -4056,3 +4056,15 @@ Puntos: visto (oscuro) / actual (píldora con progreso) / pendiente (gris)
 .hero-below-caption #hero.has-image.hero-no-image {
     padding-bottom: 0 !important;
 }
+
+/*--------------------------------------------------
+Portada (home): esquinas redondeadas en las tarjetas de proyecto
+.item-appear ya recorta (overflow:hidden) la imagen/vídeo y el zoom del hover;
+el título (.item-caption-wrapper) queda fuera y no se ve afectado.
+---------------------------------------------------*/
+
+.metro-grid .item .item-appear {
+    border-radius: 20px;
+    isolation: isolate;                                  /* Safari: recorta bien vídeos y transforms */
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
