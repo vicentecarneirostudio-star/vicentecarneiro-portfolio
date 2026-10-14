@@ -37,6 +37,7 @@ Function CustomFunction
 
 		//Add here your custom js code
 		PlannerSlider();
+		HomeGridVideos();
 
 	}// End CustomFunction
 
@@ -129,6 +130,51 @@ Crossfade slider (jQuery). Markup: .planner-slider en aldiplanner.html
 		});
 
 	}// End PlannerSlider
+
+/*--------------------------------------------------
+Function HomeGridVideos
+En móvil/tablet no hay "hover", así que los vídeos de las tarjetas de la portada
+se reproducen solos mientras la tarjeta está en pantalla y se pausan al salir.
+En ordenador se mantiene el comportamiento de la plantilla (play al pasar el ratón).
+---------------------------------------------------*/
+
+	function HomeGridVideos() {
+
+		var $videos = $('.metro-grid .item video');
+		if (!$videos.length || typeof isMobile !== 'function' || !isMobile()) { return; }
+
+		$videos.each(function() {
+			var video = this;
+			if (video.getAttribute('data-autoplay-ready')) { return; }
+			video.setAttribute('data-autoplay-ready', '1');
+
+			// iOS exige estos atributos para reproducir "dentro de la página"
+			video.muted = true;
+			video.defaultMuted = true;
+			video.setAttribute('playsinline', '');
+			video.setAttribute('webkit-playsinline', '');
+
+			function play() {
+				var p = video.play();
+				if (p && p.catch) { p.catch(function() {}); }   // p. ej. modo de bajo consumo: queda la imagen
+			}
+
+			if ('IntersectionObserver' in window) {
+				// Se observa la tarjeta (no el <video>): el vídeo es más grande que la tarjeta
+				// y su ratio de visibilidad real sería mínimo.
+				var card = $(video).closest('.item')[0] || video;
+				new IntersectionObserver(function(entries) {
+					entries.forEach(function(entry) {
+						if (entry.isIntersecting) { play(); } else { video.pause(); }
+					});
+				}, { threshold: 0.25 }).observe(card);
+			} else {
+				play();
+			}
+		});
+
+	}// End HomeGridVideos
+
 
 /*--------------------------------------------------
 Function Page Load
