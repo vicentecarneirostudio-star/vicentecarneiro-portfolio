@@ -4025,7 +4025,8 @@ Puntos: visto (oscuro) / actual (píldora con progreso) / pendiente (gris)
     animation: planner-fill var(--planner-delay, 3000ms) linear forwards;
 }
 
-.planner-slider.is-paused .planner-slider-fill { animation-play-state: paused; }
+.planner-slider.is-paused .planner-slider-fill,
+.planner-slider.is-away .planner-slider-fill { animation-play-state: paused; }
 
 .planner-slider.is-stopped .planner-slider-dot.is-active .planner-slider-fill {
     animation: none;
@@ -4090,4 +4091,61 @@ el alto (arriba/abajo) queda fijo y, si la proporción difiere, se recorta por l
     transform: none;
     object-fit: cover;
     object-position: center center;
+}
+
+/* Botón pausa / play junto a los puntos del slider de ALDI Planner */
+
+.planner-slider-toggle {
+    position: relative;
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    margin-left: 6px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .3);
+    cursor: pointer;
+    transition: transform .3s ease, background-color .3s ease;
+}
+
+.planner-slider-toggle:hover { transform: scale(1.1); }
+
+/* icono pausa: dos barras */
+.planner-slider-toggle::before,
+.planner-slider-toggle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 3px;
+    height: 10px;
+    margin-top: -5px;
+    background: #171717;
+    border-radius: 1px;
+}
+.planner-slider-toggle::before { left: 50%; margin-left: -5px; }
+.planner-slider-toggle::after  { left: 50%; margin-left: 2px; }
+
+/* icono play: triángulo */
+.planner-slider-toggle.is-play::before {
+    left: 50%;
+    width: 0;
+    height: 0;
+    margin: -6px 0 0 -3px;
+    background: none;
+    border-style: solid;
+    border-width: 6px 0 6px 10px;
+    border-color: transparent transparent transparent #171717;
+    border-radius: 0;
+}
+.planner-slider-toggle.is-play::after { display: none; }
+
+@media (max-width: 767px) {
+    .planner-slider-toggle { width: 22px; height: 22px; margin-left: 2px; }
+    .planner-slider-toggle::before,
+    .planner-slider-toggle::after { height: 8px; margin-top: -4px; }
+    .planner-slider-toggle::before { margin-left: -4px; }
+    .planner-slider-toggle::after  { margin-left: 1px; }
+    .planner-slider-toggle.is-play::before { margin: -5px 0 0 -2px; border-width: 5px 0 5px 8px; }
 }

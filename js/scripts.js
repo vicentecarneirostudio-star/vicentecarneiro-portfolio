@@ -58,7 +58,8 @@ Crossfade slider (jQuery). Markup: .planner-slider en aldiplanner.html
 			var $dots = $slider.find('.planner-slider-dots');
 			var total = $slides.length;
 			var current = 0;
-			var stopped = false;
+			var stopped = false;      // el usuario eligió una imagen (punto o deslizar): se queda parada
+			var userPaused = false;   // el usuario pulsó pausa
 			var delay = parseInt($slider.data('autoplay'), 10) || 3000;
 
 			if (total < 2) { return; }
@@ -75,14 +76,13 @@ Crossfade slider (jQuery). Markup: .planner-slider en aldiplanner.html
 			$slides.each(function(i) {
 				$('<button type="button" class="planner-slider-dot"><span class="planner-slider-fill"></span></button>')
 					.attr('aria-label', 'Go to slide ' + (i + 1))
-					.on('click', function() {
-						stopped = true;               // el usuario elige: la imagen se queda parada
-						$slider.addClass('is-stopped');
-						goTo(i);
-					})
+					.on('click', function() { stopOn(i); })
 					.appendTo($dots);
 			});
 			var $dotBtns = $dots.children();
+
+			// Botón pausa / play (junto a los puntos)
+			var $toggle = $('<button type="button" class="planner-slider-toggle"></button>').appendTo($dots);
 
 			function render() {
 				$slides.removeClass('is-active').eq(current).addClass('is-active');
@@ -91,24 +91,52 @@ Crossfade slider (jQuery). Markup: .planner-slider en aldiplanner.html
 				});
 			}
 
+			function renderToggle() {
+				var halted = stopped || userPaused;
+				$toggle.toggleClass('is-play', halted)
+					   .attr('aria-label', halted ? 'Play slideshow' : 'Pause slideshow');
+			}
+
 			function goTo(n) {
 				current = (n + total) % total;
 				render();
 			}
 
+			// El usuario elige una imagen: se queda parada ahí
+			function stopOn(n) {
+				stopped = true;
+				userPaused = false;
+				$slider.addClass('is-stopped').removeClass('is-paused');
+				goTo(n);
+				renderToggle();
+			}
+
+			$toggle.on('click', function() {
+				if (stopped) {                       // reanudar desde la imagen actual
+					stopped = false;
+					userPaused = false;
+					$slider.removeClass('is-stopped is-paused');
+				} else if (userPaused) {             // reanudar la pausa
+					userPaused = false;
+					$slider.removeClass('is-paused');
+				} else {                             // pausar (la barra se congela donde está)
+					userPaused = true;
+					$slider.addClass('is-paused');
+				}
+				renderToggle();
+			});
+
 			// Al terminar de llenarse la barra del punto activo, pasar a la siguiente imagen
 			$dots.on('animationend', '.planner-slider-fill', function() {
-				if (stopped) { return; }
+				if (stopped || userPaused) { return; }
 				if (!$.contains(document.documentElement, $slider[0])) { return; }
 				goTo(current + 1);
 			});
 
-			// Pausa (barra incluida) al pasar el ratón y al cambiar de pestaña
-			$slider.on('mouseenter', function() { $slider.addClass('is-paused'); })
-				   .on('mouseleave', function() { $slider.removeClass('is-paused'); });
+			// Pausa automática solo si la pestaña no está visible (no interfiere con el botón)
 			$(document).on('visibilitychange', function() {
 				if (!$.contains(document.documentElement, $slider[0])) { return; }
-				$slider.toggleClass('is-paused', document.hidden);
+				$slider.toggleClass('is-away', document.hidden);
 			});
 
 			// Deslizar con el dedo (cuenta como elección del usuario)
@@ -119,14 +147,11 @@ Crossfade slider (jQuery). Markup: .planner-slider en aldiplanner.html
 				if (touchX === null) { return; }
 				var diff = e.originalEvent.changedTouches[0].clientX - touchX;
 				touchX = null;
-				if (Math.abs(diff) > 40) {
-					stopped = true;
-					$slider.addClass('is-stopped');
-					goTo(diff < 0 ? current + 1 : current - 1);
-				}
+				if (Math.abs(diff) > 40) { stopOn(diff < 0 ? current + 1 : current - 1); }
 			});
 
 			render();
+			renderToggle();
 		});
 
 	}// End PlannerSlider
