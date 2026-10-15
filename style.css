@@ -4093,59 +4093,32 @@ el alto (arriba/abajo) queda fijo y, si la proporción difiere, se recorta por l
     object-position: center center;
 }
 
-/* Botón pausa / play junto a los puntos del slider de ALDI Planner */
+/* Botón pausa / play junto a los puntos del slider de ALDI Planner
+   Solo el icono (blanco, esquinas redondeadas), sin círculo de fondo. */
 
 .planner-slider-toggle {
-    position: relative;
     flex: 0 0 auto;
     width: 28px;
     height: 28px;
-    margin-left: 6px;
+    margin-left: 8px;
     padding: 0;
     border: 0;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, .3);
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Crect x=%224.5%22 y=%223%22 width=%225.5%22 height=%2218%22 rx=%222.2%22 fill=%22%23fff%22/%3E%3Crect x=%2214%22 y=%223%22 width=%225.5%22 height=%2218%22 rx=%222.2%22 fill=%22%23fff%22/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px 18px;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .45));
     cursor: pointer;
-    transition: transform .3s ease, background-color .3s ease;
+    transition: transform .3s ease, opacity .3s ease;
 }
 
-.planner-slider-toggle:hover { transform: scale(1.1); }
-
-/* icono pausa: dos barras */
-.planner-slider-toggle::before,
-.planner-slider-toggle::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 3px;
-    height: 10px;
-    margin-top: -5px;
-    background: #171717;
-    border-radius: 1px;
+.planner-slider-toggle.is-play {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath d=%22M7.5 5 L19 12 L7.5 19 Z%22 fill=%22%23fff%22 stroke=%22%23fff%22 stroke-width=%223%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E");
 }
-.planner-slider-toggle::before { left: 50%; margin-left: -5px; }
-.planner-slider-toggle::after  { left: 50%; margin-left: 2px; }
 
-/* icono play: triángulo */
-.planner-slider-toggle.is-play::before {
-    left: 50%;
-    width: 0;
-    height: 0;
-    margin: -6px 0 0 -3px;
-    background: none;
-    border-style: solid;
-    border-width: 6px 0 6px 10px;
-    border-color: transparent transparent transparent #171717;
-    border-radius: 0;
-}
-.planner-slider-toggle.is-play::after { display: none; }
+.planner-slider-toggle:hover { transform: scale(1.15); }
 
 @media (max-width: 767px) {
-    .planner-slider-toggle { width: 22px; height: 22px; margin-left: 2px; }
-    .planner-slider-toggle::before,
-    .planner-slider-toggle::after { height: 8px; margin-top: -4px; }
-    .planner-slider-toggle::before { margin-left: -4px; }
-    .planner-slider-toggle::after  { margin-left: 1px; }
-    .planner-slider-toggle.is-play::before { margin: -5px 0 0 -2px; border-width: 5px 0 5px 8px; }
+    .planner-slider-toggle { width: 22px; height: 22px; margin-left: 2px; background-size: 14px 14px; }
 }
