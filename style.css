@@ -4088,9 +4088,12 @@ el alto (arriba/abajo) queda fijo y, si la proporción difiere, se recorta por l
     height: 100%;
     min-width: 0;
     min-height: 0;
-    transform: none;
     object-fit: cover;
     object-position: center center;
+    /* El vídeo se ve el doble de grande dentro de la máscara (la tarjeta no cambia de tamaño):
+       el sobrante lo recorta .hero-video-wrapper / .item-appear. Cambiar 2 para ajustar el zoom. */
+    transform: scale(2);
+    transform-origin: center center;
 }
 
 /* Botón pausa / play junto a los puntos del slider de ALDI Planner
