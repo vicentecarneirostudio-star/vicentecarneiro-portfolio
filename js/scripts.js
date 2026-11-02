@@ -38,6 +38,7 @@ Function CustomFunction
 		//Add here your custom js code
 		PlannerSlider();
 		HomeGridVideos();
+		HomePlannerCover();
 
 	}// End CustomFunction
 
@@ -199,6 +200,217 @@ En ordenador se mantiene el comportamiento de la plantilla (play al pasar el rat
 		});
 
 	}// End HomeGridVideos
+
+/*--------------------------------------------------
+Portada animada de ALDI Planner (home)  ·  PlannerCover
+Secuencia de imágenes con jQuery dentro de la tarjeta (máscara):
+  1  zoom progresivo (de 1x a 1,2x) → fundido
+  2,3,4  transición lateral con curva "ease in" suave
+  5,6  entran opacas, sin máscara, con un zoom rápido → vuelve a la 1 con un corte directo (bucle)
+Escritorio: arranca al pasar el ratón y vuelve a la portada al salir.
+Móvil: se reproduce sola mientras la tarjeta está en pantalla.
+Todos los tiempos están en CFG (milisegundos).
+---------------------------------------------------*/
+
+/* PlannerCover:start */
+window.PlannerCover = (function($) {
+
+	var CFG = {
+		zoomMs: 3000,                               // imagen 1: zoom progresivo
+		zoomTo: 1.2,                                //   hasta 1,2x el tamaño original
+		zoomEase: 'cubic-bezier(.37,0,.63,1)',
+		holdMs: 1500,                               // pausa en las imágenes 5 y 6
+		holdSlideMs: 1000,                          // pausa en las imágenes 2, 3 y 4
+		fadeMs: 600,                                // fundido 1 → 2
+		slideMs: 1000,                              // transición lateral (2 → 3 → 4)
+		slideEase: 'cubic-bezier(.5,0,.2,1)',       //   "ease in" suave (arranca despacio y frena al llegar)
+		cardMs: 750,                                // imágenes 5 y 6: entran OPACAS, sin máscara, con un zoom
+		cardEase: 'cubic-bezier(.25,1,.5,1)',       //   arranca con fuerza (algo menos) y se asienta suave
+		cardZoomFrom: 1.5                           //   zoom de partida de la imagen que entra
+	};
+
+	function init($cover, $hover, opts) {
+
+		opts = opts || {};
+		if ($cover.data('pcReady')) { return; }
+		if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }
+
+		var $slides = $cover.find('.pc-slide');
+		if ($slides.length < 6) { return; }
+		$cover.data('pcReady', true);
+
+		var S = $slides.toArray().map(function(el) { return $(el); });
+		var token = 0, running = false, z = 1, loaded = false, cur = 0;
+		var RESET = { transform: 'translate3d(0,0,0) scale(1)' };
+
+		function log(msg) { if (window.__pcLog) { window.__pcLog.push({ t: Math.round(performance.now()), msg: msg }); } }
+
+		// pone estilos sin transición
+		function set($el, props) { $el.css($.extend({ transition: 'none' }, props)); }
+
+		// anima con transición CSS (la curva se define por propiedad)
+		function tx($el, props, ms, ease) {
+			var t = [];
+			for (var k in props) { t.push(k + ' ' + ms + 'ms ' + ease); }
+			void $el[0].offsetWidth;                 // fuerza el reflow antes de animar
+			$el.css($.extend({ transition: t.join(', ') }, props));
+		}
+
+		function front($el) { z += 1; $el.css('z-index', z); }
+
+		function reset() {
+			S.forEach(function($el, i) {
+				set($el, $.extend({ opacity: i === 0 ? 1 : 0, 'z-index': i === 0 ? 2 : 1 }, RESET));
+			});
+			z = 2;
+			cur = 0;
+		}
+
+		// oculta todas menos la que se está viendo (se hace AL EMPEZAR cada paso, nunca al acabar:
+		// así, aunque el navegador vaya justo de fotogramas, no se ve nunca el fondo)
+		function hideOthers(keep) {
+			S.forEach(function($el, i) {
+				if (i !== keep) { set($el, $.extend({ opacity: 0 }, RESET)); }
+			});
+		}
+
+		function wait(ms, my) {
+			return new Promise(function(res, rej) {
+				setTimeout(function() { if (my !== token) { rej('cancel'); } else { res(); } }, ms);
+			});
+		}
+
+		// fundido: la nueva aparece (opacidad) por encima de la anterior, que se queda debajo
+		async function fadeTo(i, my) {
+			log('fundido → ' + (i + 1));
+			hideOthers(cur);
+			set(S[i], $.extend({ opacity: 0 }, RESET));
+			front(S[i]);
+			tx(S[i], { opacity: 1 }, CFG.fadeMs, 'ease');
+			cur = i;
+			await wait(CFG.fadeMs, my);
+		}
+
+		// lateral: entra desde la derecha mientras la anterior sale hacia la izquierda
+		async function slideTo(i, my) {
+			log('lateral → ' + (i + 1));
+			hideOthers(cur);
+			set(S[i], $.extend({ opacity: 1 }, RESET, { transform: 'translate3d(100%,0,0) scale(1)' }));
+			front(S[i]);
+			tx(S[i], { transform: 'translate3d(0,0,0) scale(1)' }, CFG.slideMs, CFG.slideEase);
+			tx(S[cur], { transform: 'translate3d(-100%,0,0) scale(1)' }, CFG.slideMs, CFG.slideEase);
+			cur = i;
+			await wait(CFG.slideMs, my);
+		}
+
+		// cards 5 y 6 (y vuelta a la 1): la nueva imagen entra OPACA (sin transparencia) y SIN máscara.
+		// Solo hay zoom: la nueva llega ampliada y se asienta, y la anterior se acerca un poco.
+		async function cardTo(i, my) {
+			log('card → ' + (i + 1));
+			hideOthers(cur);
+			set(S[i], $.extend({ opacity: 1 }, RESET, { transform: 'translate3d(0,0,0) scale(' + CFG.cardZoomFrom + ')' }));
+			front(S[i]);
+			tx(S[i], { transform: 'translate3d(0,0,0) scale(1)' }, CFG.cardMs, CFG.cardEase);
+			tx(S[cur], { transform: 'translate3d(0,0,0) scale(1.14)' }, CFG.cardMs, CFG.cardEase);
+			cur = i;
+			await wait(CFG.cardMs, my);
+		}
+
+		// vuelta a la 1: cambio directo (opaco, sin zoom ni transición); la 1 empieza enseguida su propio zoom
+		function cutTo(i) {
+			log('corte → ' + (i + 1));
+			hideOthers(cur);
+			set(S[i], $.extend({ opacity: 1 }, RESET));
+			front(S[i]);
+			cur = i;
+		}
+
+		async function play(my) {
+			try {
+				while (my === token) {
+					await wait(30, my);
+					log('zoom progresivo 1');
+					tx(S[0], { transform: 'translate3d(0,0,0) scale(' + CFG.zoomTo + ')' }, CFG.zoomMs, CFG.zoomEase);
+					await wait(CFG.zoomMs, my);
+					await fadeTo(1, my);   await wait(CFG.holdSlideMs, my);
+					await slideTo(2, my);  await wait(CFG.holdSlideMs, my);
+					await slideTo(3, my);  await wait(CFG.holdSlideMs, my);
+					await cardTo(4, my);  await wait(CFG.holdMs, my);
+					await cardTo(5, my);  await wait(CFG.holdMs, my);
+					cutTo(0);             // vuelve a la 1 sin efecto y el bucle empieza de nuevo
+				}
+			} catch (e) { if (e !== 'cancel') { throw e; } }
+		}
+
+		function load() {
+			if (loaded) { return; }
+			loaded = true;
+			S.forEach(function($el) { var src = $el.attr('data-src'); if (src) { $el.attr('src', src); } });
+		}
+
+		function start() {
+			if (running) { return; }
+			running = true; token += 1;
+			load();
+			reset();
+			$cover.addClass('is-on');
+			log('inicio');
+			play(token);
+		}
+
+		function stop() {
+			if (!running) { return; }
+			running = false; token += 1;
+			$cover.removeClass('is-on');                  // vuelve (con fundido) a la portada
+			log('parada');
+			var my = token;
+			setTimeout(function() { if (!running && my === token) { reset(); } }, 600);
+		}
+
+		// precarga las imágenes cuando la tarjeta está cerca de verse
+		if ('IntersectionObserver' in window) {
+			var pre = new IntersectionObserver(function(entries) {
+				if (entries[0].isIntersecting) { load(); pre.disconnect(); }
+			}, { rootMargin: '400px' });
+			pre.observe($hover[0]);
+		}
+
+		reset();
+
+		if (opts.mobile && 'IntersectionObserver' in window) {
+			// móvil/tablet: no hay "hover" → se reproduce mientras la tarjeta se ve
+			new IntersectionObserver(function(entries) {
+				if (entries[0].isIntersecting) { start(); } else { stop(); }
+			}, { threshold: 0.35 }).observe($hover[0]);
+		} else {
+			$hover.on('mouseenter', start).on('mouseleave', stop);
+		}
+
+		return { start: start, stop: stop, cfg: CFG };
+	}
+
+	return { init: init, cfg: CFG };
+
+})(jQuery);
+/* PlannerCover:end */
+
+/*--------------------------------------------------
+Function HomePlannerCover: engancha la animación a la tarjeta de ALDI Planner
+---------------------------------------------------*/
+
+	function HomePlannerCover() {
+
+		$('.metro-grid .item').has('.planner-cover').each(function() {
+			var $item = $(this);
+			PlannerCover.init(
+				$item.find('.planner-cover'),
+				$item.find('.item-parallax'),
+				{ mobile: typeof isMobile === 'function' && isMobile() }
+			);
+		});
+
+	}// End HomePlannerCover
+
 
 
 /*--------------------------------------------------
