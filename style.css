@@ -4158,3 +4158,15 @@ En reposo está oculta (se ve la portada normal); al activarse (.is-on) aparece 
     opacity: 0;
     will-change: transform, opacity;
 }
+
+/*--------------------------------------------------
+Portada (home): sin efecto de retroceso (zoom 1.05 → 1) al pasar el ratón
+Solo en las tarjetas con la clase .no-hover-zoom (ALDI Refresh, CaixaBank, ALDI Planner);
+el resto de tarjetas conserva el efecto de la plantilla. La imagen se queda en su estado de reposo.
+---------------------------------------------------*/
+
+.metro-grid .item.no-hover-zoom .item-wrap-image,
+.metro-grid .item.no-hover-zoom .item-parallax:hover .item-appear .item-wrap-image {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
