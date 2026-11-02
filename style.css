@@ -4090,9 +4090,9 @@ el alto (arriba/abajo) queda fijo y, si la proporción difiere, se recorta por l
     min-height: 0;
     object-fit: cover;
     object-position: center center;
-    /* El vídeo se ve el doble de grande dentro de la máscara (la tarjeta no cambia de tamaño):
-       el sobrante lo recorta .hero-video-wrapper / .item-appear. Cambiar 2 para ajustar el zoom. */
-    transform: scale(2);
+    /* El vídeo se ve 1,5 veces más grande dentro de la máscara (la tarjeta no cambia de tamaño):
+       el sobrante lo recorta .hero-video-wrapper / .item-appear. Cambiar 1.5 para ajustar el zoom. */
+    transform: scale(1.5);
     transform-origin: center center;
 }
 
