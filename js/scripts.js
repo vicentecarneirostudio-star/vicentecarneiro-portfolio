@@ -217,7 +217,7 @@ window.PlannerCover = (function($) {
 
 	var CFG = {
 		zoomMs: 3000,                               // imagen 1: zoom progresivo
-		zoomTo: 1.2,                                //   hasta 1,2x el tamaño original
+		zoomTo: 1.1,                                //   hasta 1,1x el tamaño original
 		zoomEase: 'cubic-bezier(.37,0,.63,1)',
 		holdMs: 1500,                               // pausa en las imágenes 5 y 6
 		holdSlideMs: 1000,                          // pausa en las imágenes 2, 3 y 4
