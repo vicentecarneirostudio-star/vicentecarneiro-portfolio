@@ -38,6 +38,7 @@ Function CustomFunction
 		//Add here your custom js code
 		PlannerSlider();
 		HomeGridVideos();
+		HomeCardCovers();
 		HomePlannerCover();
 
 	}// End CustomFunction
@@ -200,6 +201,37 @@ En ordenador se mantiene el comportamiento de la plantilla (play al pasar el rat
 		});
 
 	}// End HomeGridVideos
+
+/*--------------------------------------------------
+Portada estática encima del vídeo (home)  ·  HomeCardCovers
+Las tarjetas con la clase .has-cover muestran su portada (la imagen de la tarjeta) y el vídeo
+queda oculto: al empezar a reproducirse (ratón encima en escritorio, tarjeta visible en móvil)
+la portada se desvanece y se ve el vídeo; al pausarse vuelve la portada y el vídeo se rebobina.
+---------------------------------------------------*/
+
+	function HomeCardCovers() {
+
+		$('.metro-grid .item.has-cover').each(function() {
+			var $item = $(this);
+			var video = $item.find('video')[0];
+			if (!video || video.getAttribute('data-cover-ready')) { return; }
+			video.setAttribute('data-cover-ready', '1');
+
+			var rewind;
+			video.addEventListener('playing', function() {
+				clearTimeout(rewind);
+				$item.addClass('is-playing');
+			});
+			video.addEventListener('pause', function() {
+				$item.removeClass('is-playing');
+				clearTimeout(rewind);
+				rewind = setTimeout(function() {          // al terminar el fundido, para empezar desde el principio
+					if (video.paused) { try { video.currentTime = 0; } catch (e) {} }
+				}, 500);
+			});
+		});
+
+	}// End HomeCardCovers
 
 /*--------------------------------------------------
 Portada animada de ALDI Planner (home)  ·  PlannerCover

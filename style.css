@@ -4170,3 +4170,17 @@ el resto de tarjetas conserva el efecto de la plantilla. La imagen se queda en s
     -webkit-transform: scale(1.05);
     transform: scale(1.05);
 }
+
+/*--------------------------------------------------
+Portada (home): tarjetas con portada estática (.has-cover)
+El vídeo queda oculto hasta que empieza a reproducirse (JS: HomeCardCovers añade .is-playing).
+---------------------------------------------------*/
+
+.metro-grid .item.has-cover .hero-video-wrapper {
+    opacity: 0;
+    transition: opacity .45s ease;
+}
+
+.metro-grid .item.has-cover.is-playing .hero-video-wrapper {
+    opacity: 1;
+}
