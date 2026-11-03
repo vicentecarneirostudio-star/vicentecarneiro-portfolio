@@ -2166,6 +2166,17 @@ Function Portfolio
 			  transitionDuration: "0.5s"
 			});
 			
+			// Isotope calcula las posiciones al arrancar (DOM ready). Si en ese momento el ancho de la
+			// página aún no es el definitivo (carga, fuentes, barra de scroll), la rejilla queda desfasada
+			// con huecos laterales hasta recargar. Se recoloca cuando la página ya está estable.
+			var relayoutPortfolio = function() {
+				if ($container.data('isotope')) { $container.isotope('layout'); }
+			};
+			$(window).on('load', relayoutPortfolio);
+			if (document.fonts && document.fonts.ready) { document.fonts.ready.then(relayoutPortfolio); }
+			setTimeout(relayoutPortfolio, 600);
+			setTimeout(relayoutPortfolio, 2000);
+			
 			
 			$('#filters a').on('click', function() {
 				$('#filters a').removeClass('active');
