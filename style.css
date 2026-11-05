@@ -4195,4 +4195,5 @@ El vídeo queda oculto hasta que empieza a reproducirse (JS: HomeCardCovers aña
     color: #222;
     opacity: 0.4;
     white-space: nowrap;
+    text-transform: uppercase;
 }
