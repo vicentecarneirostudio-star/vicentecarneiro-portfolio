@@ -4207,12 +4207,13 @@ El vídeo queda oculto hasta que empieza a reproducirse (JS: HomeCardCovers aña
 }
 
 /* Home (escritorio): menos espacio entre bloques para que las tarjetas estrechas sean más anchas.
-   El margen exterior de la página no cambia: lo que se quita entre tarjetas se pasa al padding lateral. */
+   El margen exterior de la página no cambia: lo que se quita entre tarjetas se pasa al padding lateral.
+   Proporcional al ancho de ventana: a 1920px la tarjeta estrecha mide 530px. */
 @media only screen and (min-width: 1025px) {
-    .metro-grid.metro-grid-tight { padding: 0 56px; }
-    .metro-grid.metro-grid-tight .item { margin-left: 24px; margin-right: 24px; width: calc(33.3333% - 48px); }
-    .metro-grid.metro-grid-tight .item.wide { margin-left: 24px; margin-right: 24px; width: calc(66.6666% - 48px); }
+    .metro-grid.metro-grid-tight { padding: 0 calc(80px - 2.2135vw); }
+    .metro-grid.metro-grid-tight .item { margin-left: 2.2135vw; margin-right: 2.2135vw; width: calc(33.3333% - 4.427vw); }
+    .metro-grid.metro-grid-tight .item.wide { margin-left: 2.2135vw; margin-right: 2.2135vw; width: calc(66.6666% - 4.427vw); }
 }
 @media only screen and (min-width: 1025px) and (max-width: 1466px) {
-    .metro-grid.metro-grid-tight { padding: 0 36px; }
+    .metro-grid.metro-grid-tight { padding: 0 calc(60px - 2.2135vw); }
 }
