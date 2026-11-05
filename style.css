@@ -4184,3 +4184,15 @@ El vídeo queda oculto hasta que empieza a reproducirse (JS: HomeCardCovers aña
 .metro-grid .item.has-cover.is-playing .hero-video-wrapper {
     opacity: 1;
 }
+
+/* Logros bajo el título de las tarjetas de la home */
+.metro-grid .item .item-result {
+    clear: both;
+    display: block;
+    position: relative;
+    font-size: 14px;
+    line-height: 22px;
+    color: #222;
+    opacity: 0.4;
+    white-space: nowrap;
+}
