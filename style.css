@@ -4197,3 +4197,11 @@ El vídeo queda oculto hasta que empieza a reproducirse (JS: HomeCardCovers aña
     white-space: nowrap;
     text-transform: uppercase;
 }
+
+/* Cuando título y categoría van apilados (≤1466px): título > logros > UX/UI */
+@media only screen and (max-width: 1466px) {
+    .metro-grid .item .item-caption { display: flex; flex-direction: column; }
+    .metro-grid .item .item-caption .item-title { order: 1; }
+    .metro-grid .item .item-caption .item-result { order: 2; }
+    .metro-grid .item .item-caption .item-cat { order: 3; align-self: flex-start; }
+}
