@@ -4217,3 +4217,39 @@ El vídeo queda oculto hasta que empieza a reproducirse (JS: HomeCardCovers aña
 @media only screen and (min-width: 1025px) and (max-width: 1466px) {
     .metro-grid.metro-grid-tight { padding: 0 calc(60px - 2.2135vw); }
 }
+
+/*--------------------------------------------------
+Fade slider (finance_en.html - InOne): imagenes apiladas con fundido, sin controles.
+El tamaño sale de la primera imagen (relacion 998/786); las demas se superponen.
+---------------------------------------------------*/
+
+.fade-slider {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 998 / 786;
+}
+
+.fade-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    transition: opacity .5s ease;
+    pointer-events: none;
+}
+
+.fade-slide.is-active { opacity: 1; z-index: 1; }
+
+.fade-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fade-slide { transition-duration: .01s; }
+}

@@ -37,6 +37,7 @@ Function CustomFunction
 
 		//Add here your custom js code
 		PlannerSlider();
+		FadeSlider();
 		HomeGridVideos();
 		HomeCardCovers();
 		HomePlannerCover();
@@ -157,6 +158,51 @@ Crossfade slider (jQuery). Markup: .planner-slider en aldiplanner.html
 		});
 
 	}// End PlannerSlider
+
+/*--------------------------------------------------
+Function FadeSlider
+Fundido simple entre imagenes, sin controles. Markup: .fade-slider > .fade-slide (finance_en.html)
+data-interval = ms entre imagenes (por defecto 1500). Solo avanza si el slider es visible y la pestaña esta activa.
+---------------------------------------------------*/
+
+	function FadeSlider() {
+
+		$('.fade-slider').each(function() {
+
+			var $slider = $(this);
+			if ($slider.data('fadeReady')) { return; }
+			$slider.data('fadeReady', true);
+
+			var $slides = $slider.find('.fade-slide');
+			var total = $slides.length;
+			var current = 0;
+			var visible = false;
+			var interval = parseInt($slider.data('interval'), 10) || 1500;
+
+			if (total < 2) { return; }
+
+			// Precargar y decodificar para que el fundido no se retrase
+			$slides.find('img').each(function() {
+				if (this.decode) { this.decode().catch(function() {}); }
+			});
+
+			if ('IntersectionObserver' in window) {
+				new IntersectionObserver(function(entries) {
+					visible = entries[0].isIntersecting;
+				}).observe($slider[0]);
+			} else {
+				visible = true;
+			}
+
+			setInterval(function() {
+				if (!visible || document.hidden) { return; }
+				if (!$.contains(document.documentElement, $slider[0])) { return; }
+				current = (current + 1) % total;
+				$slides.removeClass('is-active').eq(current).addClass('is-active');
+			}, interval);
+		});
+
+	}// End FadeSlider
 
 /*--------------------------------------------------
 Function HomeGridVideos
