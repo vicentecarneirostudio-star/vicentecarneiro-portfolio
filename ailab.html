@@ -22,10 +22,35 @@
     <link href="css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
+<style>
+/* AI Lab: fondo negro */
+.page-block-title{margin:0 0 32px}
+.ai-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+.ai-step-num{font-family:'basis_grotesque_promedium',sans-serif;font-size:14px;color:#8a8a8a;margin:0 0 14px}
+.ai-step h5{margin:0 0 12px;color:#fff}
+.ai-step p{margin:0;font-size:14px;line-height:1.6;color:#a8a8a8}
+.card{border:1.5px solid transparent;border-radius:18px;padding:18.5px 18.5px 20.5px;
+  background:linear-gradient(#171717,#171717) padding-box,
+             linear-gradient(90deg,#3c3c3c 0%,rgba(60,60,60,.25) 40%,rgba(60,60,60,0) 75%) border-box}
+.tools-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.tool-name{font-family:'basis_grotesque_promedium',sans-serif;font-size:22px;line-height:1.1;margin:0 0 10px;color:#fff}
+.tool p{margin:0;font-size:12px;line-height:1.55;color:#a8a8a8}
+.ai-projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.thumb-ph{aspect-ratio:16/10;max-width:100%;background:#262626;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#777;font-size:13px;margin:0 0 16px}
+.ai-project h5{margin:0 0 8px;color:#fff}
+.ai-project p{margin:0;font-size:14px;line-height:1.6;color:#a8a8a8}
+@media (max-width:1100px){.tools-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:820px){.ai-steps{grid-template-columns:1fr;gap:32px}.tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ai-projects{grid-template-columns:1fr}}
+@media (max-width:480px){.tools-grid{grid-template-columns:1fr}}
+/* Cabecera en móvil: título justo debajo del menú, sin hueco en blanco arriba */
+@media (max-width:767px){
+.hero-below-caption #hero #hero-caption{height:auto!important;padding-top:110px;padding-bottom:20px}
+}
+</style>
 </head>
 
 
-<body class="hidden hidden-ball hero-below-caption smooth-scroll uppercase-text" data-primary-color="#a3834b">
+<body class="hidden hidden-ball hero-below-caption smooth-scroll uppercase-text" data-primary-color="#d2b7fc">
 
 
 	<main>
@@ -177,9 +202,6 @@
                                         <div class="button-text sticky right"><span data-hover="Scroll to Explore">Scroll to Explore</span></div>
                                     </div>
                                 </div>
-                                <div class="hero-footer-right">
-                    				<div id="info-text">All Projects (08)</div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -191,209 +213,39 @@
                         <!-- Main Page Content -->
                         <div id="main-page-content">
 
+<div class="content-row row_padding_top row_padding_left row_padding_right row_padding_bottom full dark-section" data-bgcolor="#171717">
+<h4 class="page-block-title has-mask">How I use AI in my day to day</h4>
+<div class="ai-steps">
+<div class="ai-step has-animation" data-delay="0"><div class="ai-step-num">01</div><h5>Optimizing work processes</h5><p>[Short description: how I use AI to work faster and better.]</p></div>
+<div class="ai-step has-animation" data-delay="150"><div class="ai-step-num">02</div><h5>Training my team</h5><p>[Short description: how I help my team use AI in their daily work.]</p></div>
+<div class="ai-step has-animation" data-delay="300"><div class="ai-step-num">03</div><h5>Creating new products from new ideas</h5><p>[Short description: how I turn ideas into new products with AI.]</p></div>
+</div>
+</div>
 
-                            <div id="itemsWrapperLinks">
-                                <div id="itemsWrapper" class="scale-fitthumbs">
+<div class="content-row row_padding_top row_padding_left row_padding_right row_padding_bottom full dark-section" data-bgcolor="#171717">
+<h4 class="page-block-title has-mask">Tools I use</h4>
+<div class="tools-grid">
+<div class="card tool has-animation" data-delay="0"><div class="tool-name">Claude</div><p>AI assistant</p></div>
+<div class="card tool has-animation" data-delay="100"><div class="tool-name">ChatGPT</div><p>AI assistant</p></div>
+<div class="card tool has-animation" data-delay="200"><div class="tool-name">Base44</div><p>AI app builder</p></div>
+<div class="card tool has-animation" data-delay="300"><div class="tool-name">GitHub</div><p>Code and versioning</p></div>
+<div class="card tool has-animation" data-delay="400"><div class="tool-name">Vercel</div><p>Deployment</p></div>
+<div class="card tool has-animation" data-delay="500"><div class="tool-name">Supabase</div><p>Database and auth</p></div>
+<div class="card tool has-animation" data-delay="600"><div class="tool-name">Cloudflare</div><p>Hosting and analytics</p></div>
+</div>
+</div>
 
-                                    <div class="showcase-reverse-list-holder content-full-width">
-                                		<div class="showcase-reverse-list">
+<div class="content-row row_padding_top row_padding_left row_padding_right row_padding_bottom full dark-section" data-bgcolor="#171717">
+<h4 class="page-block-title has-mask">Projects made with AI</h4>
+<div class="ai-projects">
+<div class="ai-project has-animation" data-delay="0"><div class="thumb-ph">Image or video</div><h5>Project name 1</h5><p>[One-line description of the project and the role AI played.]</p></div>
+<div class="ai-project has-animation" data-delay="150"><div class="thumb-ph">Image or video</div><h5>Project name 2</h5><p>[One-line description of the project and the role AI played.]</p></div>
+<div class="ai-project has-animation" data-delay="0"><div class="thumb-ph">Image or video</div><h5>Project name 3</h5><p>[One-line description of the project and the role AI played.]</p></div>
+<div class="ai-project has-animation" data-delay="150"><div class="thumb-ph">Image or video</div><h5>Project name 4</h5><p>[One-line description of the project and the role AI played.]</p></div>
+</div>
+</div>
 
-                                            <!-- Column Reverse Left -->
-                                            <div class="col-reverse-left">
-
-                                                <div class="sr-slide trigger-item" data-color="#70261b">
-                                                    <div class="item-parallax">
-                                                        <div class="item-appear">
-                                                            <div class="item-content">
-                                                                <a class="item-wrap ajax-link-project" data-type="page-transition" href="project05.html"></a>
-                                                                <div class="item-wrap-image">
-                                                                    <img src="images/05hero.jpg" class="item-image grid__item-img trigger-item-link" alt="">
-                                                                    <div class="hero-video-wrapper">
-                                                                        <video loop muted class="bgvid">
-                                                                            <source src="https://keepgrading.cdn.prismic.io/keepgrading/4cc5e758-b802-4063-9790-dd5dd278f346_G2_MP.mp4" type="video/mp4">
-                                                                            <source src="https://keepgrading.cdn.prismic.io/keepgrading/ba4f9e29-6acc-4993-9ce3-8eb9261f414b_G2_WEBM.webm" type="video/webm">
-                                                                        </video>
-                                                                    </div>
-                                                                </div>
-                                                                <img class="grid__item-img grid__item-img--large" src="images/05hero.jpg" alt="" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="item-caption-wrapper">
-                                                            <div class="item-caption">
-                                                                <div class="item-title"><span>Hotel Room</span></div>
-                                                                <div class="item-cat"><span data-hover="View Case">Photography</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="sr-slide trigger-item" data-color="#333">
-                                                    <div class="item-parallax">
-                                                        <div class="item-appear">
-                                                            <div class="item-content">
-                                                                <a class="item-wrap ajax-link-project" data-type="page-transition" href="project06.html"></a>
-                                                                <div class="item-wrap-image">
-                                                                    <img src="images/06hero.jpg" class="item-image grid__item-img trigger-item-link" alt="">
-                                                                </div>
-                                                                <img class="grid__item-img grid__item-img--large" src="images/06hero.jpg" alt="" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="item-caption-wrapper">
-                                                            <div class="item-caption">
-                                                                <div class="item-title"><span>Liquify Typography</span></div>
-                                                                <div class="item-cat"><span data-hover="View Case">Design</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-                                            <!--/Column Reverse Left -->
-
-
-                                            <!-- Column Reverse Center -->
-                                            <div class="col-reverse-center">
-
-                                                <div class="sr-slide trigger-item" data-color="#de2606">
-                                                    <div class="item-parallax">
-                                                        <div class="item-appear">
-                                                            <div class="item-content">
-                                                                <a class="item-wrap ajax-link-project" data-type="page-transition" href="project01.html"></a>
-                                                                <div class="item-wrap-image">
-                                                                    <img src="images/01hero.jpg" class="item-image grid__item-img trigger-item-link" alt="">
-                                                                </div>
-                                                                <img class="grid__item-img grid__item-img--large" src="images/01hero.jpg" alt="" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="item-caption-wrapper">
-                                                            <div class="item-caption">
-                                                                <div class="item-title"><span>London Royal Theatre</span></div>
-                                                                <div class="item-cat"><span data-hover="View Case">Brand Identity</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="sr-slide trigger-item" data-color="#444">
-                                                    <div class="item-parallax">
-                                                        <div class="item-appear">
-                                                            <div class="item-content">
-                                                                <a class="item-wrap ajax-link-project" data-type="page-transition" href="project02.html"></a>
-                                                                <div class="item-wrap-image">
-                                                                    <img src="images/02hero.jpg" class="item-image grid__item-img trigger-item-link" alt="">
-                                                                </div>
-                                                                <img class="grid__item-img grid__item-img--large" src="images/02hero.jpg" alt="" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="item-caption-wrapper">
-                                                            <div class="item-caption">
-                                                                <div class="item-title"><span>Font Porlane</span></div>
-                                                                <div class="item-cat"><span data-hover="View Case">Graphic Design</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="sr-slide trigger-item" data-color="#462883">
-                                                    <div class="item-parallax">
-                                                        <div class="item-appear">
-                                                            <div class="item-content">
-                                                                <a class="item-wrap ajax-link-project" data-type="page-transition" href="project03.html"></a>
-                                                                <div class="item-wrap-image">
-                                                                    <img src="images/03hero.jpg" class="item-image grid__item-img trigger-item-link" alt="">
-                                                                </div>
-                                                                <img class="grid__item-img grid__item-img--large" src="images/03hero.jpg" alt="" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="item-caption-wrapper">
-                                                            <div class="item-caption">
-                                                                <div class="item-title"><span>Moon Purple Dust</span></div>
-                                                                <div class="item-cat"><span data-hover="View Case">Photography</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="sr-slide trigger-item" data-color="#000">
-                                                    <div class="item-parallax">
-                                                        <div class="item-appear">
-                                                            <div class="item-content">
-                                                                <a class="item-wrap ajax-link-project" data-type="page-transition" href="project04.html"></a>
-                                                                <div class="item-wrap-image">
-                                                                    <img src="images/04hero.jpg" class="item-image grid__item-img trigger-item-link" alt="">
-                                                                </div>
-                                                                <img class="grid__item-img grid__item-img--large" src="images/04hero.jpg" alt="" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="item-caption-wrapper">
-                                                            <div class="item-caption">
-                                                                <div class="item-title"><span>Listen Everything</span></div>
-                                                                <div class="item-cat"><span data-hover="View Case">3D Animation</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!--/Column Reverse Center -->
-
-
-
-                                            <!-- Column Reverse Right -->
-                                            <div class="col-reverse-right">
-
-                                                <div class="sr-slide trigger-item" data-color="#444">
-                                                    <div class="item-parallax">
-                                                        <div class="item-appear">
-                                                            <div class="item-content">
-                                                                <a class="item-wrap ajax-link-project" data-type="page-transition" href="project07.html"></a>
-                                                                <div class="item-wrap-image">
-                                                                    <img src="images/07hero.jpg" class="item-image grid__item-img trigger-item-link" alt="">
-                                                                </div>
-                                                                <img class="grid__item-img grid__item-img--large" src="images/07hero.jpg" alt="" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="item-caption-wrapper">
-                                                            <div class="item-caption">
-                                                                <div class="item-title"><span>Orenda Coffee</span></div>
-                                                                <div class="item-cat"><span data-hover="View Case">Brand Identity</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="sr-slide trigger-item" data-color="#af8b6f">
-                                                    <div class="item-parallax">
-                                                        <div class="item-appear">
-                                                            <div class="item-content">
-                                                                <a class="item-wrap ajax-link-project" data-type="page-transition" href="project08.html"></a>
-                                                                <div class="item-wrap-image">
-                                                                    <img src="images/08hero.jpg" class="item-image grid__item-img trigger-item-link" alt="">
-                                                                </div>
-                                                                <img class="grid__item-img grid__item-img--large" src="images/08hero.jpg" alt="" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="item-caption-wrapper">
-                                                            <div class="item-caption">
-                                                                <div class="item-title"><span>Only Opulence</span></div>
-                                                                <div class="item-cat"><span data-hover="View Case">Graphic Design</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!--/Column Reverse Right -->
-
-                                		</div>
-                            		</div>
-
-                                </div>
-                            </div>
-
-
-                        </div>
+</div>
                         <!--/Main Page Content -->
 
 
@@ -424,35 +276,30 @@
 
                 <!-- Footer -->
                 <footer class="hidden">
-                    <div id="footer-container">
+<div id="footer-container">
+<div class="button-wrap left" id="backtotop">
+<div class="icon-wrap parallax-wrap">
+<div class="button-icon parallax-element">
+<i class="arrow-icon-up"></i>
+</div>
+</div>
+<div class="button-text sticky left"><span data-hover="Back Top">Back Top</span></div>
+</div>
+<div class="footer-middle">
+		<div class="copyright"><a class="link" target="_blank" href="https://vicentecarneiro.com/">Vicente Carneiro</a> © 2026</div>
+</div>
 
-                        <div id="backtotop" class="button-wrap left">
-                            <div class="icon-wrap parallax-wrap">
-                                <div class="button-icon parallax-element">
-                                    <i class="arrow-icon-up"></i>
-                                </div>
-                            </div>
-                            <div class="button-text sticky left"><span data-hover="Back Top">Back Top</span></div>
-                        </div>
+<div class="socials-wrap">
+		<div class="socials-text">I'm here too</div>
+		<ul class="socials">
 
-                        <div class="footer-middle">
-                            <div class="copyright"><a class="link" target="_blank" href="https://www.clapat.com/">ClaPat Themes</a> © 2022</div>
-                        </div>
+				<li><span class="parallax-wrap"><a class="parallax-element" href="https://www.behance.net/vicenteproject" target="_blank">Be</a></span></li>
 
-                        <div class="socials-wrap">
-                            <div class="socials-icon"><i class="fa-solid fa-share-nodes"></i></div>
-                            <div class="socials-text">Follow Us</div>
-                            <ul class="socials">
-                                <li><span class="parallax-wrap"><a class="parallax-element" href="https://www.dribbble.com/clapat" target="_blank">Db</a></span></li>
-                                <li><span class="parallax-wrap"><a class="parallax-element" href="https://www.twitter.com/clapatdesign" target="_blank">Tw</a></span></li>
-                                <li><span class="parallax-wrap"><a class="parallax-element" href="https://www.behance.com/clapat" target="_blank">Be</a></span></li>
-                                <li><span class="parallax-wrap"><a class="parallax-element" href="https://www.facebook.com/clapat.ro" target="_blank">Fb</a></span></li>
-                                <li><span class="parallax-wrap"><a class="parallax-element" href="https://www.instagram.com/clapat.themes/">In</a></span></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </footer>
+				<li><span class="parallax-wrap"><a class="parallax-element" href="https://www.linkedin.com/in/vicentecarneiro/" target="_blank">In</a></span></li>
+		</ul>
+</div>
+</div>
+</footer>
                 <!--/Footer -->
 
 
