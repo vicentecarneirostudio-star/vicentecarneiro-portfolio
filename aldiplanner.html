@@ -59,6 +59,15 @@
 @media (max-width:1280px){.phases-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:820px){.phases-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.phases-grid{grid-template-columns:1fr}.phase-title{white-space:normal}}
+
+/* Cabecera en móvil: el título sube (sin hueco arriba) y la imagen se ve entera (16:9)
+   en vez de recortarse a la altura de la pantalla. scripts.js toma la altura del título de
+   .hero-translate y common.js fija alturas en línea, de ahí los !important. */
+@media (max-width:767px){
+	.hero-below-caption .hero-translate{height:calc(210px + 28vw)!important}
+	.hero-below-caption #hero.has-image{padding-bottom:56.25vw!important}
+	#hero-image-wrapper{height:56.25vw!important}
+}
 </style></head>
 <body class="hidden hidden-ball hero-below-caption smooth-scroll uppercase-text no-open-animation" data-primary-color="#d2b7fc">
 <main>
