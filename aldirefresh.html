@@ -60,6 +60,8 @@
   opacity: 1 !important;
 }
 .preloader-wrap { display: none !important; }
+/* Galería horizontal: separa la primera imagen del borde izquierdo */
+.panels.panels-inset .panels-container .panel:first-child img{margin-left:clamp(20px,2vw,40px)}
 </style></head>
 <body class="hidden hidden-ball hero-below-caption smooth-scroll uppercase-text no-open-animation" data-primary-color="#d2b7fc">
 <main>
@@ -496,7 +498,7 @@ Through a unified design system and shared UX foundations, we aligned navigation
 
 <div class="content-row light-section full" data-bgcolor="#eee">
 
-		<div class="panels">
+		<div class="panels panels-inset">
 
 <div class="panels-container">
 
