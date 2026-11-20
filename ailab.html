@@ -30,13 +30,17 @@
 .ai-step h5{margin:0 0 12px;color:#fff}
 .ai-step p{margin:0;font-size:14px;line-height:1.6;color:#a8a8a8}
 .card{border-radius:18px;padding:20px 20px 22px;background:rgba(255,255,255,.045)}
+.tools-row{margin-top:-230px}
+/* el bloque sube por encima del brillo del carrusel: su contenedor no debe tapar ese brillo con un fondo opaco */
+.dark-section-wrapper:has(.tools-row){background-color:transparent!important}
+@media (max-width:860px){.tools-row{margin-top:-110px}}
 .tools-groups{display:grid;grid-template-columns:3fr 2fr 2fr;gap:40px}
 .tool-group-label{margin:0 0 16px;font-family:'basis_grotesque_promedium',sans-serif;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#8a8a8a}
 .tool-group-cards{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
 .tools-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.tool-logo{display:block;height:28px;width:auto;margin:0 0 20px}
+.tool-logo{display:block;height:28px;width:auto;margin:0 0 34px}
 .tool-name{font-family:'basis_grotesque_promedium',sans-serif;font-size:22px;line-height:1.1;margin:0 0 10px;color:#fff}
-.tool p{margin:0;font-size:12px;line-height:1.55;color:#a8a8a8}
+.tool p{margin:0;font-size:13px;line-height:1.6;color:#a8a8a8}
 .ai-projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
 .thumb-ph{aspect-ratio:16/10;max-width:100%;background:#262626;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#777;font-size:13px;margin:0 0 16px}
 .ai-project h5{margin:0 0 8px;color:#fff}
@@ -374,21 +378,21 @@
 
 </div>
 
-<div class="content-row row_padding_top row_padding_left row_padding_right row_padding_bottom full dark-section" data-bgcolor="#171717">
+<div class="content-row tools-row row_padding_top row_padding_left row_padding_right row_padding_bottom full dark-section" data-bgcolor="#171717">
 <h4 class="page-block-title has-mask">Built with:</h4>
 <div class="tools-groups">
 <div class="tool-group has-animation" data-delay="0"><div class="tool-group-label">Code, apps and images</div><div class="tool-group-cards" data-n="3">
-<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/claude.svg" alt="Claude logo"><div class="tool-name">Claude</div><p>AI assistant</p></div>
-<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/openai.svg" alt="ChatGPT logo"><div class="tool-name">ChatGPT</div><p>AI assistant</p></div>
-<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/base44.svg" alt="Base44 logo"><div class="tool-name">Base44</div><p>AI app builder</p></div>
+<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/claude.svg" alt="Claude logo"><div class="tool-name">Claude</div><p>I use Claude to write code, plan strategy and think through ideas.</p></div>
+<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/openai.svg" alt="ChatGPT logo"><div class="tool-name">ChatGPT</div><p>I use ChatGPT for images, code, writing and research.</p></div>
+<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/base44.svg" alt="Base44 logo"><div class="tool-name">Base44</div><p>I use Base44 to turn an idea into a working app in minutes.</p></div>
 </div></div>
 <div class="tool-group has-animation" data-delay="120"><div class="tool-group-label">Upload and manage code</div><div class="tool-group-cards" data-n="2">
-<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/github.svg" alt="GitHub logo"><div class="tool-name">GitHub</div><p>Code and versioning</p></div>
-<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/vercel.svg" alt="Vercel logo"><div class="tool-name">Vercel</div><p>Deployment</p></div>
+<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/github.svg" alt="GitHub logo"><div class="tool-name">GitHub</div><p>I use GitHub to store my code and keep every version safe.</p></div>
+<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/vercel.svg" alt="Vercel logo"><div class="tool-name">Vercel</div><p>I use Vercel to publish my projects and ship updates fast.</p></div>
 </div></div>
 <div class="tool-group has-animation" data-delay="240"><div class="tool-group-label">Database and hosting</div><div class="tool-group-cards" data-n="2">
-<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/supabase.svg" alt="Supabase logo"><div class="tool-name">Supabase</div><p>Database and auth</p></div>
-<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/cloudflare.svg" alt="Cloudflare logo"><div class="tool-name">Cloudflare</div><p>Hosting and analytics</p></div>
+<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/supabase.svg" alt="Supabase logo"><div class="tool-name">Supabase</div><p>I use Supabase for the database and user accounts of my apps.</p></div>
+<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/cloudflare.svg" alt="Cloudflare logo"><div class="tool-name">Cloudflare</div><p>I use Cloudflare to host my sites and watch their traffic.</p></div>
 </div></div>
 </div>
 </div>
