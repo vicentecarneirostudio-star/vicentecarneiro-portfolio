@@ -87,13 +87,14 @@
 /* tarjetas */
 .daily-cards{display:flex;gap:10px;height:clamp(400px,58vh,540px)}
 .daily-card{position:relative;flex:1 1 0;min-width:0;overflow:hidden;border-radius:var(--daily-radius);cursor:pointer;outline:none;
+  background:var(--daily-black);-webkit-mask-image:-webkit-radial-gradient(#fff,#000);
   transition:flex-grow var(--daily-dur) var(--daily-ease);isolation:isolate}
 .daily-card.is-active{flex-grow:2.3}
-.daily-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.04);
+.daily-card-bg{position:absolute;inset:0;border-radius:inherit;background-size:cover;background-position:center;transform:scale(1.04);
   transition:transform var(--daily-dur) var(--daily-ease),filter var(--daily-dur) var(--daily-ease)}
 .daily-card:not(.is-active) .daily-card-bg{filter:brightness(.78)}
 .daily-card.is-active .daily-card-bg{transform:scale(1)}
-.daily-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 62%);pointer-events:none}
+.daily-card::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(0deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 62%);pointer-events:none}
 .daily-card:focus-visible{outline:2px solid #fff;outline-offset:3px}
 
 .daily-num{position:absolute;z-index:2;top:26px;left:30px;font-family:'basis_grotesque_promedium',sans-serif;font-size:13px;letter-spacing:.08em;color:rgba(255,255,255,.85)}
