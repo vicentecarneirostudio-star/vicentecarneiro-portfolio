@@ -29,19 +29,19 @@
 .ai-step-num{font-family:'basis_grotesque_promedium',sans-serif;font-size:14px;color:#8a8a8a;margin:0 0 14px}
 .ai-step h5{margin:0 0 12px;color:#fff}
 .ai-step p{margin:0;font-size:14px;line-height:1.6;color:#a8a8a8}
-.card{border:1.5px solid transparent;border-radius:18px;padding:18.5px 18.5px 20.5px;
-  background:linear-gradient(#171717,#171717) padding-box,
-             linear-gradient(90deg,#3c3c3c 0%,rgba(60,60,60,.25) 40%,rgba(60,60,60,0) 75%) border-box}
+.card{border-radius:18px;padding:20px 20px 22px;background:rgba(255,255,255,.045)}
+.tools-groups{display:grid;grid-template-columns:3fr 2fr 2fr;gap:40px}
+.tool-group-label{margin:0 0 16px;font-family:'basis_grotesque_promedium',sans-serif;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#8a8a8a}
+.tool-group-cards{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
 .tools-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .tool-logo{display:block;height:28px;width:auto;margin:0 0 20px}
-.tool-logo--empty{width:1px}
 .tool-name{font-family:'basis_grotesque_promedium',sans-serif;font-size:22px;line-height:1.1;margin:0 0 10px;color:#fff}
 .tool p{margin:0;font-size:12px;line-height:1.55;color:#a8a8a8}
 .ai-projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
 .thumb-ph{aspect-ratio:16/10;max-width:100%;background:#262626;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#777;font-size:13px;margin:0 0 16px}
 .ai-project h5{margin:0 0 8px;color:#fff}
 .ai-project p{margin:0;font-size:14px;line-height:1.6;color:#a8a8a8}
-@media (max-width:1100px){.tools-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:1100px){.tools-groups{grid-template-columns:1fr;gap:34px}}
 @media (max-width:820px){.ai-steps{grid-template-columns:1fr;gap:32px}.tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ai-projects{grid-template-columns:1fr}}
 @media (max-width:480px){.tools-grid{grid-template-columns:1fr}}
 /* Cabecera en móvil: título justo debajo del menú, sin hueco en blanco arriba */
@@ -376,14 +376,20 @@
 
 <div class="content-row row_padding_top row_padding_left row_padding_right row_padding_bottom full dark-section" data-bgcolor="#171717">
 <h4 class="page-block-title has-mask">Built with:</h4>
-<div class="tools-grid">
+<div class="tools-groups">
+<div class="tool-group has-animation" data-delay="0"><div class="tool-group-label">Code, apps and images</div><div class="tool-group-cards" data-n="3">
 <div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/claude.svg" alt="Claude logo"><div class="tool-name">Claude</div><p>AI assistant</p></div>
-<div class="card tool has-animation" data-delay="100"><img class="tool-logo" src="images/ailab/logos/openai.svg" alt="ChatGPT logo"><div class="tool-name">ChatGPT</div><p>AI assistant</p></div>
-<div class="card tool has-animation" data-delay="200"><img class="tool-logo" src="images/ailab/logos/base44.svg" alt="Base44 logo"><div class="tool-name">Base44</div><p>AI app builder</p></div>
-<div class="card tool has-animation" data-delay="300"><img class="tool-logo" src="images/ailab/logos/github.svg" alt="GitHub logo"><div class="tool-name">GitHub</div><p>Code and versioning</p></div>
-<div class="card tool has-animation" data-delay="400"><img class="tool-logo" src="images/ailab/logos/vercel.svg" alt="Vercel logo"><div class="tool-name">Vercel</div><p>Deployment</p></div>
-<div class="card tool has-animation" data-delay="500"><span class="tool-logo tool-logo--empty" aria-hidden="true"></span><div class="tool-name">Supabase</div><p>Database and auth</p></div>
-<div class="card tool has-animation" data-delay="600"><img class="tool-logo" src="images/ailab/logos/cloudflare.svg" alt="Cloudflare logo"><div class="tool-name">Cloudflare</div><p>Hosting and analytics</p></div>
+<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/openai.svg" alt="ChatGPT logo"><div class="tool-name">ChatGPT</div><p>AI assistant</p></div>
+<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/base44.svg" alt="Base44 logo"><div class="tool-name">Base44</div><p>AI app builder</p></div>
+</div></div>
+<div class="tool-group has-animation" data-delay="120"><div class="tool-group-label">Upload and manage code</div><div class="tool-group-cards" data-n="2">
+<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/github.svg" alt="GitHub logo"><div class="tool-name">GitHub</div><p>Code and versioning</p></div>
+<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/vercel.svg" alt="Vercel logo"><div class="tool-name">Vercel</div><p>Deployment</p></div>
+</div></div>
+<div class="tool-group has-animation" data-delay="240"><div class="tool-group-label">Database and hosting</div><div class="tool-group-cards" data-n="2">
+<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/supabase.svg" alt="Supabase logo"><div class="tool-name">Supabase</div><p>Database and auth</p></div>
+<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/cloudflare.svg" alt="Cloudflare logo"><div class="tool-name">Cloudflare</div><p>Hosting and analytics</p></div>
+</div></div>
 </div>
 </div>
 
