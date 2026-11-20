@@ -87,7 +87,9 @@
 /* tarjetas */
 .daily-cards{display:flex;gap:10px;height:clamp(400px,58vh,540px)}
 .daily-card{position:relative;flex:1 1 0;min-width:0;overflow:hidden;border-radius:var(--daily-radius);cursor:pointer;outline:none;
-  transition:flex-grow var(--daily-dur) var(--daily-ease);isolation:isolate}
+  transition:flex-grow var(--daily-dur) var(--daily-ease);isolation:isolate;
+  /* capa propia por tarjeta: se pinta a píxel entero, aparte del scroll suave de la página */
+  transform:translateZ(0);will-change:transform,flex-grow;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .daily-card.is-active{flex-grow:2.3}
 .daily-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.04);
   transition:transform var(--daily-dur) var(--daily-ease),filter var(--daily-dur) var(--daily-ease)}
