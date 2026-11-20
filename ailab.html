@@ -86,16 +86,16 @@
 
 /* tarjetas */
 .daily-cards{display:flex;gap:10px;height:clamp(400px,58vh,540px)}
-@property --daily-dim{syntax:'<number>';inherits:false;initial-value:0}
 .daily-card{position:relative;flex:1 1 0;min-width:0;overflow:hidden;border-radius:var(--daily-radius);cursor:pointer;outline:none;
-  /* una sola capa pintada (velo + atenuado + imagen), sin capas hijas ni transformaciones: evita la línea clara en el borde */
-  --daily-dim:0;
-  background-color:var(--daily-black);
-  background-image:linear-gradient(0deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 62%),linear-gradient(rgba(0,0,0,var(--daily-dim)),rgba(0,0,0,var(--daily-dim))),var(--img);
-  background-size:100% 100%,100% 100%,cover;background-position:center;background-repeat:no-repeat;
-  transition:flex-grow var(--daily-dur) var(--daily-ease),--daily-dim var(--daily-dur) var(--daily-ease)}
+  background:var(--daily-black);
+  transition:flex-grow var(--daily-dur) var(--daily-ease);isolation:isolate}
 .daily-card.is-active{flex-grow:2.3}
-.daily-card:not(.is-active){--daily-dim:.22}
+/* la imagen siempre es un poco mayor que la tarjeta (nunca "justa"), así no hay fila de borde a medias */
+.daily-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.07);
+  transition:transform var(--daily-dur) var(--daily-ease),filter var(--daily-dur) var(--daily-ease)}
+.daily-card:not(.is-active) .daily-card-bg{filter:brightness(.78)}
+.daily-card.is-active .daily-card-bg{transform:scale(1.025)}
+.daily-card::after{content:"";position:absolute;inset:-4px;background:linear-gradient(0deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 62%);pointer-events:none}
 .daily-card:focus-visible{outline:2px solid #fff;outline-offset:3px}
 
 .daily-num{position:absolute;z-index:2;top:26px;left:30px;font-family:'basis_grotesque_promedium',sans-serif;font-size:13px;letter-spacing:.08em;color:rgba(255,255,255,.85)}
@@ -130,7 +130,7 @@
   .daily-num{top:16px;left:24px}
 }
 @media (prefers-reduced-motion:reduce){
-  .daily-card,.daily-bg,.daily-card-title,.reveal{transition-duration:.01s!important;transition-delay:0s!important}
+  .daily-card,.daily-card-bg,.daily-bg,.daily-card-title,.reveal{transition-duration:.01s!important;transition-delay:0s!important}
   .daily-tag.is-active::before{animation:none;transform:scaleX(1)}
 }
 
@@ -337,7 +337,8 @@
     </ul>
 
     <div class="daily-cards">
-      <article class="daily-card is-active" tabindex="0" aria-expanded="true" data-i="0" style="--img:url('images/ailab/bg_verde.jpg')">
+      <article class="daily-card is-active" tabindex="0" aria-expanded="true" data-i="0">
+        <div class="daily-card-bg" style="background-image:url('images/ailab/bg_verde.jpg')"></div>
         <div class="daily-num">01</div>
         <h3 class="daily-card-title" aria-hidden="true">Smarter internal processes</h3>
         <div class="daily-content">
@@ -346,7 +347,8 @@
         </div>
       </article>
 
-      <article class="daily-card" tabindex="0" aria-expanded="false" data-i="1" style="--img:url('images/ailab/bg_azul.jpg')">
+      <article class="daily-card" tabindex="0" aria-expanded="false" data-i="1">
+        <div class="daily-card-bg" style="background-image:url('images/ailab/bg_azul.jpg')"></div>
         <div class="daily-num">02</div>
         <h3 class="daily-card-title" aria-hidden="true">Growing the team</h3>
         <div class="daily-content">
@@ -355,7 +357,8 @@
         </div>
       </article>
 
-      <article class="daily-card" tabindex="0" aria-expanded="false" data-i="2" style="--img:url('images/ailab/bg_naranja.jpg')">
+      <article class="daily-card" tabindex="0" aria-expanded="false" data-i="2">
+        <div class="daily-card-bg" style="background-image:url('images/ailab/bg_naranja.jpg')"></div>
         <div class="daily-num">03</div>
         <h3 class="daily-card-title" aria-hidden="true">From idea to MVP</h3>
         <div class="daily-content">
@@ -548,6 +551,23 @@
   tags.forEach(function(t,k){t.addEventListener('click',function(){if(k!==current){show(k)}schedule()})});
   root.querySelector('.daily-cards').addEventListener('mouseenter',function(){pause(true)});
   root.querySelector('.daily-cards').addEventListener('mouseleave',function(){pause(false)});
+
+  /* Alinea las tarjetas a píxeles enteros: con el scroll suave de la web, un borde en medio píxel
+     deja una línea clara en el canto de abajo. Se recalcula al cargar, al cambiar de tamaño y tras cargar fuentes. */
+  var box=root.querySelector('.daily-cards');
+  function snap(){
+    box.style.height='';box.style.position='relative';box.style.top='0px';
+    var h=box.getBoundingClientRect().height;
+    if(h>0&&matchMedia('(min-width:861px)').matches){box.style.height=Math.round(h)+'px'}
+    var ref=document.querySelector('.scroll-content')||document.body;
+    var y=box.getBoundingClientRect().top-ref.getBoundingClientRect().top;
+    var frac=((y%1)+1)%1;
+    box.style.top=((1-frac)%1)+'px';
+  }
+  snap();
+  window.addEventListener('load',function(){snap();setTimeout(snap,800);setTimeout(snap,2500)});
+  window.addEventListener('resize',function(){clearTimeout(snap.t);snap.t=setTimeout(snap,150)});
+  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(snap)}
 
   /* solo avanza cuando el bloque está en pantalla */
   if('IntersectionObserver' in window){
