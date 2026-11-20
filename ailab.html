@@ -30,10 +30,16 @@
 .ai-step h5{margin:0 0 12px;color:#fff}
 .ai-step p{margin:0;font-size:14px;line-height:1.6;color:#a8a8a8}
 .card{border-radius:18px;padding:20px 20px 22px;background:rgba(255,255,255,.045)}
-/* pie: enlaces con nombre completo (la plantilla los hace círculos de 40px para dos letras) */
-.socials-wrap{width:340px}
-.socials li{width:auto}
-.socials li a{width:auto;padding:0 7px;white-space:nowrap}
+/* Línea final bajo el pie: web hecha en colaboración con IA */
+.ai-credit{position:relative;z-index:900;width:100%;box-sizing:border-box;margin:0;padding:6px 40px 30px;background:var(--daily-black);text-align:center;
+  font-family:'basis_grotesque_proregular',sans-serif;font-size:12px;line-height:1.7;letter-spacing:.06em;text-transform:uppercase;color:#8a8a8a}
+.ai-credit span{display:inline}
+.ai-credit a{color:#fff;text-decoration:none;white-space:nowrap;transition:opacity .25s ease}
+.ai-credit a:hover{opacity:.6}
+.ai-credit .sep{margin:0 .6em;color:#555}
+@media (max-width:1024px){.ai-credit{padding:4px 40px 28px}}
+@media (max-width:767px){.ai-credit{padding:2px 24px 26px;font-size:11px;letter-spacing:.05em;text-wrap:balance}
+  .ai-credit .tools{display:block;margin-top:4px}}
 .tools-row{margin-top:-230px}
 /* el bloque sube por encima del brillo del carrusel: su contenedor no debe tapar ese brillo con un fondo opaco */
 .dark-section-wrapper:has(.tools-row){background-color:transparent!important}
@@ -467,18 +473,17 @@
 </div>
 
 <div class="socials-wrap">
-		<div class="socials-text">Made with AI</div>
+		<div class="socials-text">I'm here too</div>
 		<ul class="socials">
 
-				<li><span class="parallax-wrap"><a class="parallax-element" href="https://www.cloudflare.com" target="_blank" rel="noopener">Cloudflare</a></span></li>
+				<li><span class="parallax-wrap"><a class="parallax-element" href="https://www.behance.net/vicenteproject" target="_blank">Be</a></span></li>
 
-				<li><span class="parallax-wrap"><a class="parallax-element" href="https://github.com" target="_blank" rel="noopener">GitHub</a></span></li>
-
-				<li><span class="parallax-wrap"><a class="parallax-element" href="https://claude.ai" target="_blank" rel="noopener">Claude</a></span></li>
+				<li><span class="parallax-wrap"><a class="parallax-element" href="https://www.linkedin.com/in/vicentecarneiro/" target="_blank">In</a></span></li>
 		</ul>
 </div>
 </div>
 </footer>
+<div class="ai-credit"><span>This website is made in collaboration with AI, using tools like:</span> <span class="tools"><a href="https://claude.ai" target="_blank" rel="noopener">Claude</a><span class="sep">|</span><a href="https://github.com" target="_blank" rel="noopener">GitHub</a><span class="sep">|</span><a href="https://www.cloudflare.com" target="_blank" rel="noopener">Cloudflare</a></span></div>
                 <!--/Footer -->
 
 
