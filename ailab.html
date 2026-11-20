@@ -31,14 +31,18 @@
 .ai-step p{margin:0;font-size:14px;line-height:1.6;color:#a8a8a8}
 .card{border-radius:18px;padding:20px 20px 22px;background:rgba(255,255,255,.045)}
 /* Línea final bajo el pie: web hecha en colaboración con IA */
-.ai-credit{position:relative;z-index:900;width:100%;box-sizing:border-box;margin:0;padding:6px 40px 30px;background:var(--daily-black);text-align:center;
+.ai-credit{position:relative;z-index:900;width:100%;box-sizing:border-box;margin:0;padding:22px 40px 30px;background:var(--daily-black);text-align:center;
   font-family:'basis_grotesque_proregular',sans-serif;font-size:12px;line-height:1.7;letter-spacing:.06em;text-transform:uppercase;color:#8a8a8a}
 .ai-credit span{display:inline}
+.ai-credit .hl{font-style:normal;color:#fff}
+/* línea de separación sobre la frase, con los mismos márgenes laterales que el pie */
+.ai-credit::before{content:"";position:absolute;top:0;left:80px;right:80px;height:1px;background:rgba(255,255,255,.16)}
 .ai-credit a{color:#fff;text-decoration:none;white-space:nowrap;transition:opacity .25s ease}
 .ai-credit a:hover{opacity:.6}
 .ai-credit .sep{margin:0 .6em;color:#555}
-@media (max-width:1024px){.ai-credit{padding:4px 40px 28px}}
-@media (max-width:767px){.ai-credit{padding:2px 24px 26px;font-size:11px;letter-spacing:.05em;text-wrap:balance}
+@media (max-width:1024px){.ai-credit{padding:20px 40px 28px}.ai-credit::before{left:40px;right:40px}}
+@media (max-width:767px){.ai-credit::before{left:24px;right:24px}
+  .ai-credit{padding:18px 24px 26px;font-size:11px;letter-spacing:.05em;text-wrap:balance}
   .ai-credit .tools{display:block;margin-top:4px}}
 .tools-row{margin-top:-230px}
 /* el bloque sube por encima del brillo del carrusel: su contenedor no debe tapar ese brillo con un fondo opaco */
@@ -483,7 +487,7 @@
 </div>
 </div>
 </footer>
-<div class="ai-credit"><span>This website is made in collaboration with AI, using tools like:</span> <span class="tools"><a href="https://claude.ai" target="_blank" rel="noopener">Claude</a><span class="sep">|</span><a href="https://github.com" target="_blank" rel="noopener">GitHub</a><span class="sep">|</span><a href="https://www.cloudflare.com" target="_blank" rel="noopener">Cloudflare</a></span></div>
+<div class="ai-credit"><span>This website is made in <em class="hl">collaboration with AI</em>, using tools like:</span> <span class="tools"><a href="https://claude.ai" target="_blank" rel="noopener">Claude</a><span class="sep">|</span><a href="https://github.com" target="_blank" rel="noopener">GitHub</a><span class="sep">|</span><a href="https://www.cloudflare.com" target="_blank" rel="noopener">Cloudflare</a></span></div>
                 <!--/Footer -->
 
 
