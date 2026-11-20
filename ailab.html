@@ -88,6 +88,7 @@
 .daily-cards{display:flex;gap:10px;height:clamp(400px,58vh,540px)}
 .daily-card{position:relative;flex:1 1 0;min-width:0;overflow:hidden;border-radius:var(--daily-radius);cursor:pointer;outline:none;
   background:var(--daily-black);
+  clip-path:inset(0 round var(--daily-radius));   /* recorte redondeado más limpio que border-radius + overflow */
   transition:flex-grow var(--daily-dur) var(--daily-ease);isolation:isolate}
 .daily-card.is-active{flex-grow:2.3}
 /* la imagen siempre es un poco mayor que la tarjeta (nunca "justa"), así no hay fila de borde a medias */
@@ -96,6 +97,7 @@
 .daily-card:not(.is-active) .daily-card-bg{filter:brightness(.78)}
 .daily-card.is-active .daily-card-bg{transform:scale(1.025)}
 .daily-card::after{content:"";position:absolute;inset:-4px;background:linear-gradient(0deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 62%);pointer-events:none}
+.daily-card::before{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1.5px rgba(0,0,0,.28);z-index:3;pointer-events:none}
 .daily-card:focus-visible{outline:2px solid #fff;outline-offset:3px}
 
 .daily-num{position:absolute;z-index:2;top:26px;left:30px;font-family:'basis_grotesque_promedium',sans-serif;font-size:13px;letter-spacing:.08em;color:rgba(255,255,255,.85)}
