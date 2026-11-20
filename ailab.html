@@ -33,6 +33,8 @@
   background:linear-gradient(#171717,#171717) padding-box,
              linear-gradient(90deg,#3c3c3c 0%,rgba(60,60,60,.25) 40%,rgba(60,60,60,0) 75%) border-box}
 .tools-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.tool-logo{display:block;height:28px;width:auto;margin:0 0 20px}
+.tool-logo--empty{width:1px}
 .tool-name{font-family:'basis_grotesque_promedium',sans-serif;font-size:22px;line-height:1.1;margin:0 0 10px;color:#fff}
 .tool p{margin:0;font-size:12px;line-height:1.55;color:#a8a8a8}
 .ai-projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
@@ -319,7 +321,7 @@
 <div class="content-row full dark-section" data-bgcolor="#171717">
 
 <header class="daily-head">
-  <h2 class="daily-title" id="daily-title">My AI-powered workflow</h2>
+  <h2 class="daily-title" id="daily-title">Where I use AI</h2>
 </header>
 
 <section class="daily" id="daily" aria-labelledby="daily-title">
@@ -373,15 +375,15 @@
 </div>
 
 <div class="content-row row_padding_top row_padding_left row_padding_right row_padding_bottom full dark-section" data-bgcolor="#171717">
-<h4 class="page-block-title has-mask">Tools I use</h4>
+<h4 class="page-block-title has-mask">Built with:</h4>
 <div class="tools-grid">
-<div class="card tool has-animation" data-delay="0"><div class="tool-name">Claude</div><p>AI assistant</p></div>
-<div class="card tool has-animation" data-delay="100"><div class="tool-name">ChatGPT</div><p>AI assistant</p></div>
-<div class="card tool has-animation" data-delay="200"><div class="tool-name">Base44</div><p>AI app builder</p></div>
-<div class="card tool has-animation" data-delay="300"><div class="tool-name">GitHub</div><p>Code and versioning</p></div>
-<div class="card tool has-animation" data-delay="400"><div class="tool-name">Vercel</div><p>Deployment</p></div>
-<div class="card tool has-animation" data-delay="500"><div class="tool-name">Supabase</div><p>Database and auth</p></div>
-<div class="card tool has-animation" data-delay="600"><div class="tool-name">Cloudflare</div><p>Hosting and analytics</p></div>
+<div class="card tool has-animation" data-delay="0"><img class="tool-logo" src="images/ailab/logos/claude.svg" alt="Claude logo"><div class="tool-name">Claude</div><p>AI assistant</p></div>
+<div class="card tool has-animation" data-delay="100"><img class="tool-logo" src="images/ailab/logos/openai.svg" alt="ChatGPT logo"><div class="tool-name">ChatGPT</div><p>AI assistant</p></div>
+<div class="card tool has-animation" data-delay="200"><span class="tool-logo tool-logo--empty" aria-hidden="true"></span><div class="tool-name">Base44</div><p>AI app builder</p></div>
+<div class="card tool has-animation" data-delay="300"><img class="tool-logo" src="images/ailab/logos/github.svg" alt="GitHub logo"><div class="tool-name">GitHub</div><p>Code and versioning</p></div>
+<div class="card tool has-animation" data-delay="400"><img class="tool-logo" src="images/ailab/logos/vercel.svg" alt="Vercel logo"><div class="tool-name">Vercel</div><p>Deployment</p></div>
+<div class="card tool has-animation" data-delay="500"><span class="tool-logo tool-logo--empty" aria-hidden="true"></span><div class="tool-name">Supabase</div><p>Database and auth</p></div>
+<div class="card tool has-animation" data-delay="600"><img class="tool-logo" src="images/ailab/logos/cloudflare.svg" alt="Cloudflare logo"><div class="tool-name">Cloudflare</div><p>Hosting and analytics</p></div>
 </div>
 </div>
 
