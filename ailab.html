@@ -91,11 +91,13 @@
   /* capa propia por tarjeta: se pinta a píxel entero, aparte del scroll suave de la página */
   transform:translateZ(0);will-change:transform,flex-grow;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .daily-card.is-active{flex-grow:2.3}
-.daily-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.04);
+/* El velo oscuro va DENTRO de la capa de imagen (mismo elemento) y la imagen es siempre mayor que la tarjeta:
+   así el recorte redondeado solo corta contenido ya oscurecido y no queda una fila de borde sin velo. */
+.daily-card-bg{position:absolute;inset:0;background-image:linear-gradient(0deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 62%),var(--img);
+  background-size:100% 100%,cover;background-position:center;background-repeat:no-repeat;transform:scale(1.06);
   transition:transform var(--daily-dur) var(--daily-ease),filter var(--daily-dur) var(--daily-ease)}
 .daily-card:not(.is-active) .daily-card-bg{filter:brightness(.78)}
-.daily-card.is-active .daily-card-bg{transform:scale(1)}
-.daily-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 62%);pointer-events:none}
+.daily-card.is-active .daily-card-bg{transform:scale(1.03)}
 
 .daily-num{position:absolute;z-index:2;top:26px;left:30px;font-family:'basis_grotesque_promedium',sans-serif;font-size:13px;letter-spacing:.08em;color:rgba(255,255,255,.85)}
 
@@ -337,7 +339,7 @@
 
     <div class="daily-cards">
       <article class="daily-card is-active" tabindex="0" aria-expanded="true" data-i="0">
-        <div class="daily-card-bg" style="background-image:url('images/ailab/bg_verde.jpg')"></div>
+        <div class="daily-card-bg" style="--img:url('images/ailab/bg_verde.jpg')"></div>
         <div class="daily-num">01</div>
         <h3 class="daily-card-title" aria-hidden="true">Smarter internal processes</h3>
         <div class="daily-content">
@@ -347,7 +349,7 @@
       </article>
 
       <article class="daily-card" tabindex="0" aria-expanded="false" data-i="1">
-        <div class="daily-card-bg" style="background-image:url('images/ailab/bg_azul.jpg')"></div>
+        <div class="daily-card-bg" style="--img:url('images/ailab/bg_azul.jpg')"></div>
         <div class="daily-num">02</div>
         <h3 class="daily-card-title" aria-hidden="true">Growing the team</h3>
         <div class="daily-content">
@@ -357,7 +359,7 @@
       </article>
 
       <article class="daily-card" tabindex="0" aria-expanded="false" data-i="2">
-        <div class="daily-card-bg" style="background-image:url('images/ailab/bg_naranja.jpg')"></div>
+        <div class="daily-card-bg" style="--img:url('images/ailab/bg_naranja.jpg')"></div>
         <div class="daily-num">03</div>
         <h3 class="daily-card-title" aria-hidden="true">From idea to MVP</h3>
         <div class="daily-content">
