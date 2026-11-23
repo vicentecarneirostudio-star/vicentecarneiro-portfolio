@@ -42,21 +42,47 @@
 .thumb-ph{aspect-ratio:16/10;max-width:100%;background:#e0e0e0;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#999;font-size:13px;margin:0 0 16px}
 .ai-project h5{margin:0 0 8px}
 .ai-project p{margin:0;font-size:14px;line-height:1.6;color:#666}
-.archive-list{border-top:1px solid #d6d6d6}
-.archive-row{display:grid;grid-template-columns:90px minmax(0,1.4fr) minmax(0,1fr) 140px;gap:24px;align-items:center;padding:22px 0;border-bottom:1px solid #d6d6d6}
-.archive-year{font-size:14px;color:#888}
-.archive-name{font-family:'basis_grotesque_promedium',sans-serif;font-size:20px;color:#222}
-.archive-meta{font-size:14px;color:#666}
-.archive-thumb{aspect-ratio:3/2;background:#e0e0e0;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#999;font-size:12px}
-@media (max-width:1100px){.tools-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:820px){.ai-steps{grid-template-columns:1fr;gap:32px}.tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ai-projects{grid-template-columns:1fr}
-  .archive-row{grid-template-columns:70px minmax(0,1fr) 110px;gap:16px}.archive-meta{grid-column:2/3;grid-row:2}.archive-thumb{grid-column:3;grid-row:1/3}}
-@media (max-width:480px){.tools-grid{grid-template-columns:1fr}}
+.ver-label{margin:0 0 28px;font-family:'basis_grotesque_promedium',sans-serif;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#888}
+.ph-img{background:#e0e0e0;display:flex;align-items:center;justify-content:center;color:#999;font-size:13px}
+
+/* VERSIÓN A: cuadrícula de tarjetas */
+.arch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 28px}
+.arch-card .ph-img{aspect-ratio:4/3;border-radius:20px;margin:0 0 18px}
+.arch-card h5{margin:0 0 8px;font-family:'basis_grotesque_promedium',sans-serif;font-size:20px;line-height:1.2;color:#222;text-transform:none}
+.arch-meta{display:flex;gap:10px;flex-wrap:wrap;font-size:14px;color:#666;text-transform:none}
+.arch-meta span+span::before{content:"·";margin-right:10px;color:#aaa}
+
+/* VERSIÓN B: línea de tiempo por años */
+.arch-year{display:grid;grid-template-columns:200px minmax(0,1fr);gap:40px;padding:0 0 64px}
+.arch-year:last-child{padding-bottom:0}
+.arch-year-num{font-family:'basis_grotesque_promedium',sans-serif;font-size:clamp(44px,5vw,72px);line-height:1;color:#222}
+.arch-year-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 28px;align-content:start}
+.arch-item{display:flex;align-items:center;gap:18px}
+.arch-item .ph-img{flex:none;width:120px;aspect-ratio:3/2;border-radius:14px}
+.arch-item h5{margin:0 0 6px;font-family:'basis_grotesque_promedium',sans-serif;font-size:18px;line-height:1.2;color:#222;text-transform:none}
+.arch-gap{height:40px}
+@media (max-width:1100px){.arch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.arch-year{grid-template-columns:150px minmax(0,1fr);gap:28px}.arch-year-list{grid-template-columns:1fr}}
+@media (max-width:767px){.arch-year{grid-template-columns:1fr;gap:18px;padding-bottom:44px}}
+@media (max-width:560px){.arch-grid{grid-template-columns:1fr;gap:36px}.arch-item .ph-img{width:96px}}
 
 /* Cabecera en móvil: título justo debajo del menú, sin hueco en blanco arriba */
 @media (max-width:767px){
 .hero-below-caption #hero #hero-caption{height:auto!important;padding-top:110px;padding-bottom:20px}
 }
+
+/* Línea final bajo el pie: web hecha en colaboración con IA (misma que AI Lab, en versión clara) */
+.ai-credit{position:relative;z-index:900;width:100%;box-sizing:border-box;margin:0;padding:22px 40px 30px;background:#eee;text-align:center;
+  font-family:'basis_grotesque_proregular',sans-serif;font-size:12px;line-height:1.7;letter-spacing:.06em;text-transform:uppercase;color:#777}
+.ai-credit span{display:inline}
+.ai-credit .hl{font-style:normal;color:#222}
+.ai-credit::before{content:"";position:absolute;top:0;left:80px;right:80px;height:1px;background:rgba(0,0,0,.14)}
+.ai-credit a{color:#222;text-decoration:none;white-space:nowrap;transition:opacity .25s ease}
+.ai-credit a:hover{opacity:.6}
+.ai-credit .sep{margin:0 .6em;color:#aaa}
+@media (max-width:1024px){.ai-credit{padding:20px 40px 28px}.ai-credit::before{left:40px;right:40px}}
+@media (max-width:767px){.ai-credit::before{left:24px;right:24px}
+  .ai-credit{padding:18px 24px 26px;font-size:11px;letter-spacing:.05em;text-wrap:balance}
+  .ai-credit .tools{display:block;margin-top:4px}}
 </style></head>
 <body class="hidden hidden-ball hero-below-caption smooth-scroll uppercase-text no-open-animation" data-primary-color="#d2b7fc">
 <main>
@@ -173,14 +199,31 @@
 <div id="main-content">
 <div id="main-page-content">
 <div class="content-row row_padding_top row_padding_left row_padding_right row_padding_bottom full light-section" data-bgcolor="#eee">
-<div class="archive-list">
-<div class="archive-row has-animation" data-delay="0"><div class="archive-year">20XX</div><div class="archive-name">Project name 1</div><div class="archive-meta">Client · Category</div><div class="archive-thumb">Image</div></div>
-<div class="archive-row has-animation" data-delay="0"><div class="archive-year">20XX</div><div class="archive-name">Project name 2</div><div class="archive-meta">Client · Category</div><div class="archive-thumb">Image</div></div>
-<div class="archive-row has-animation" data-delay="0"><div class="archive-year">20XX</div><div class="archive-name">Project name 3</div><div class="archive-meta">Client · Category</div><div class="archive-thumb">Image</div></div>
-<div class="archive-row has-animation" data-delay="0"><div class="archive-year">20XX</div><div class="archive-name">Project name 4</div><div class="archive-meta">Client · Category</div><div class="archive-thumb">Image</div></div>
-<div class="archive-row has-animation" data-delay="0"><div class="archive-year">20XX</div><div class="archive-name">Project name 5</div><div class="archive-meta">Client · Category</div><div class="archive-thumb">Image</div></div>
-<div class="archive-row has-animation" data-delay="0"><div class="archive-year">20XX</div><div class="archive-name">Project name 6</div><div class="archive-meta">Client · Category</div><div class="archive-thumb">Image</div></div>
+<div class="ver-label">Version A · Cards grid</div>
+<div class="arch-grid">
+<div class="arch-card has-animation" data-delay="0"><div class="ph-img">Image</div><h5>Project name 1</h5><div class="arch-meta"><span>20XX</span><span>Client</span><span>Category</span></div></div>
+<div class="arch-card has-animation" data-delay="100"><div class="ph-img">Image</div><h5>Project name 2</h5><div class="arch-meta"><span>20XX</span><span>Client</span><span>Category</span></div></div>
+<div class="arch-card has-animation" data-delay="200"><div class="ph-img">Image</div><h5>Project name 3</h5><div class="arch-meta"><span>20XX</span><span>Client</span><span>Category</span></div></div>
+<div class="arch-card has-animation" data-delay="0"><div class="ph-img">Image</div><h5>Project name 4</h5><div class="arch-meta"><span>20XX</span><span>Client</span><span>Category</span></div></div>
+<div class="arch-card has-animation" data-delay="100"><div class="ph-img">Image</div><h5>Project name 5</h5><div class="arch-meta"><span>20XX</span><span>Client</span><span>Category</span></div></div>
+<div class="arch-card has-animation" data-delay="200"><div class="ph-img">Image</div><h5>Project name 6</h5><div class="arch-meta"><span>20XX</span><span>Client</span><span>Category</span></div></div>
 </div>
+</div>
+
+<div class="content-row row_padding_top row_padding_left row_padding_right row_padding_bottom full light-section" data-bgcolor="#eee">
+<div class="ver-label">Version B · Timeline by year</div>
+<div class="arch-year"><div class="arch-year-num">2025</div><div class="arch-year-list">
+<div class="arch-item has-animation" data-delay="0"><div class="ph-img">Image</div><div><h5>Project name 1</h5><div class="arch-meta"><span>Client</span><span>Category</span></div></div></div>
+<div class="arch-item has-animation" data-delay="0"><div class="ph-img">Image</div><div><h5>Project name 2</h5><div class="arch-meta"><span>Client</span><span>Category</span></div></div></div>
+</div></div>
+<div class="arch-year"><div class="arch-year-num">2024</div><div class="arch-year-list">
+<div class="arch-item has-animation" data-delay="0"><div class="ph-img">Image</div><div><h5>Project name 3</h5><div class="arch-meta"><span>Client</span><span>Category</span></div></div></div>
+<div class="arch-item has-animation" data-delay="0"><div class="ph-img">Image</div><div><h5>Project name 4</h5><div class="arch-meta"><span>Client</span><span>Category</span></div></div></div>
+<div class="arch-item has-animation" data-delay="0"><div class="ph-img">Image</div><div><h5>Project name 5</h5><div class="arch-meta"><span>Client</span><span>Category</span></div></div></div>
+</div></div>
+<div class="arch-year"><div class="arch-year-num">2023</div><div class="arch-year-list">
+<div class="arch-item has-animation" data-delay="0"><div class="ph-img">Image</div><div><h5>Project name 6</h5><div class="arch-meta"><span>Client</span><span>Category</span></div></div></div>
+</div></div>
 </div>
 </div>
 <!--/Main Page Content -->
@@ -215,6 +258,7 @@
 </div>
 </div>
 </footer>
+<div class="ai-credit"><span>This website is made in <em class="hl">collaboration with AI</em>, using tools like:</span> <span class="tools"><a href="https://claude.ai" target="_blank" rel="noopener">Claude</a><span class="sep">|</span><a href="https://github.com" target="_blank" rel="noopener">GitHub</a><span class="sep">|</span><a href="https://www.cloudflare.com" target="_blank" rel="noopener">Cloudflare</a></span></div>
 <!--/Footer -->
 </div>
 <!--/Content Scroll -->
