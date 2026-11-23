@@ -66,10 +66,19 @@
 .tool.is-open p{opacity:1;transform:none;transition-delay:.1s}
 .tool.is-open .tool-arrow{transform:rotate(90deg);color:#fff}
 @media (prefers-reduced-motion:reduce){.tool-more,.tool p,.tool-arrow{transition-duration:.01s!important;transition-delay:0s!important}}
-.ai-projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
-.thumb-ph{aspect-ratio:16/10;max-width:100%;background:#262626;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#777;font-size:13px;margin:0 0 16px}
-.ai-project h5{margin:0 0 8px;color:#fff}
-.ai-project p{margin:0;font-size:14px;line-height:1.6;color:#a8a8a8}
+.big-h2{margin:0 0 22px;font-family:'basis_grotesque_promedium',sans-serif;font-weight:400;font-size:clamp(34px,5.2vw,84px);line-height:1.05;color:#fff}
+.sub-h4{margin:0 0 72px;max-width:760px;font-family:'basis_grotesque_proregular',sans-serif;font-weight:400;font-size:clamp(15px,1.35vw,20px);line-height:1.5;color:#a8a8a8}
+/* proyectos: título | texto | imagen, con una línea fina encima de cada fila */
+.proj-list{border-top:1px solid rgba(255,255,255,.16)}
+.proj{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr) minmax(0,2fr);column-gap:40px;padding:30px 0 34px;border-bottom:1px solid rgba(255,255,255,.16);min-height:330px}
+.proj-title{grid-column:1;grid-row:1;margin:0;font-family:'basis_grotesque_promedium',sans-serif;font-weight:400;font-size:clamp(24px,2.3vw,36px);line-height:1.15;color:#fff;text-transform:none}
+.proj-text{grid-column:2;grid-row:1;margin:4px 0 0;font-size:15px;line-height:1.6;color:#a8a8a8;text-transform:none}
+.proj-media{grid-column:3;grid-row:1 / span 2}
+.proj-img{aspect-ratio:16/10;border-radius:16px;background:#262626;display:flex;align-items:center;justify-content:center;color:#777;font-size:13px}
+.proj-arrow{grid-column:1;grid-row:2;align-self:end;justify-self:start;width:70px;height:50px;border-radius:25px;background:#fff;color:#171717;display:flex;align-items:center;justify-content:center;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.proj:hover .proj-arrow{transform:translateX(6px)}
+@media (max-width:1024px){.proj{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:28px;min-height:0}.proj-text{grid-column:1 / -1;grid-row:2;margin:16px 0 0;max-width:620px}.proj-media{grid-column:1 / -1;grid-row:3;margin-top:24px}.proj-arrow{grid-column:1;grid-row:4;margin-top:22px}}
+@media (max-width:560px){.sub-h4{margin-bottom:44px}.proj{padding:24px 0 28px}.proj-arrow{width:60px;height:44px;border-radius:22px}}
 @media (max-width:1100px){.tools-groups{grid-template-columns:1fr;gap:34px}}
 @media (max-width:820px){.ai-steps{grid-template-columns:1fr;gap:32px}.tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ai-projects{grid-template-columns:1fr}}
 @media (max-width:480px){.tools-grid{grid-template-columns:1fr}}
@@ -423,12 +432,33 @@
 </div>
 
 <div class="content-row row_padding_top row_padding_left row_padding_right row_padding_bottom full dark-section" data-bgcolor="#171717">
-<h4 class="page-block-title has-mask">Projects made with AI</h4>
-<div class="ai-projects">
-<div class="ai-project has-animation" data-delay="0"><div class="thumb-ph">Image or video</div><h5>Project name 1</h5><p>[One-line description of the project and the role AI played.]</p></div>
-<div class="ai-project has-animation" data-delay="150"><div class="thumb-ph">Image or video</div><h5>Project name 2</h5><p>[One-line description of the project and the role AI played.]</p></div>
-<div class="ai-project has-animation" data-delay="0"><div class="thumb-ph">Image or video</div><h5>Project name 3</h5><p>[One-line description of the project and the role AI played.]</p></div>
-<div class="ai-project has-animation" data-delay="150"><div class="thumb-ph">Image or video</div><h5>Project name 4</h5><p>[One-line description of the project and the role AI played.]</p></div>
+<h2 class="has-mask big-h2">This website is made with AI</h2>
+<h4 class="has-mask sub-h4">Below, the projects I am currently working on</h4>
+<div class="proj-list">
+<article class="proj has-animation" data-delay="0">
+<h3 class="proj-title">Project name 1</h3>
+<p class="proj-text">[Short description of the project and the role AI played in it.]</p>
+<div class="proj-media"><div class="proj-img">Image or video</div></div>
+<span class="proj-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+</article>
+<article class="proj has-animation" data-delay="0">
+<h3 class="proj-title">Project name 2</h3>
+<p class="proj-text">[Short description of the project and the role AI played in it.]</p>
+<div class="proj-media"><div class="proj-img">Image or video</div></div>
+<span class="proj-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+</article>
+<article class="proj has-animation" data-delay="0">
+<h3 class="proj-title">Project name 3</h3>
+<p class="proj-text">[Short description of the project and the role AI played in it.]</p>
+<div class="proj-media"><div class="proj-img">Image or video</div></div>
+<span class="proj-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+</article>
+<article class="proj has-animation" data-delay="0">
+<h3 class="proj-title">Project name 4</h3>
+<p class="proj-text">[Short description of the project and the role AI played in it.]</p>
+<div class="proj-media"><div class="proj-img">Image or video</div></div>
+<span class="proj-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+</article>
 </div>
 </div>
 
