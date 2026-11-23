@@ -71,11 +71,15 @@
 /* proyectos: título | texto | imagen, con una línea fina encima de cada fila */
 .proj-list{border-top:1px solid rgba(255,255,255,.16)}
 .proj{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr) minmax(0,2fr);column-gap:40px;padding:30px 0 34px;border-bottom:1px solid rgba(255,255,255,.16);min-height:330px}
-.proj-title{grid-column:1;grid-row:1;margin:0;font-family:'basis_grotesque_promedium',sans-serif;font-weight:400;font-size:clamp(24px,2.3vw,36px);line-height:1.15;color:#fff;text-transform:none}
+.proj-head{grid-column:1;grid-row:1}
+.proj-label{margin:0 0 12px;font-family:'basis_grotesque_promedium',sans-serif;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#8a8a8a}
+.proj-title{margin:0;font-family:'basis_grotesque_promedium',sans-serif;font-weight:400;font-size:clamp(24px,2.3vw,36px);line-height:1.15;color:#fff;text-transform:none}
 .proj-text{grid-column:2;grid-row:1;margin:4px 0 0;font-size:15px;line-height:1.6;color:#a8a8a8;text-transform:none}
 .proj-media{grid-column:3;grid-row:1 / span 2}
-.proj-img{aspect-ratio:16/10;border-radius:16px;background:#262626;display:flex;align-items:center;justify-content:center;color:#777;font-size:13px}
+.proj-img img{display:block;width:100%;height:100%;object-fit:cover}
+.proj-img{overflow:hidden;aspect-ratio:16/10;border-radius:16px;background:#262626;display:flex;align-items:center;justify-content:center;color:#777;font-size:13px}
 .proj-arrow{grid-column:1;grid-row:2;align-self:end;justify-self:start;width:70px;height:50px;border-radius:25px;background:#fff;color:#171717;display:flex;align-items:center;justify-content:center;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+a.proj-arrow{text-decoration:none;cursor:pointer}
 .proj:hover .proj-arrow{transform:translateX(6px)}
 @media (max-width:1024px){.proj{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:28px;min-height:0}.proj-text{grid-column:1 / -1;grid-row:2;margin:16px 0 0;max-width:620px}.proj-media{grid-column:1 / -1;grid-row:3;margin-top:24px}.proj-arrow{grid-column:1;grid-row:4;margin-top:22px}}
 @media (max-width:560px){.sub-h4{margin-bottom:44px}.proj{padding:24px 0 28px}.proj-arrow{width:60px;height:44px;border-radius:22px}}
@@ -436,25 +440,25 @@
 <h4 class="has-mask sub-h4">Below, the projects I am currently working on</h4>
 <div class="proj-list">
 <article class="proj has-animation" data-delay="0">
-<h3 class="proj-title">Project name 1</h3>
+<div class="proj-head"><div class="proj-label">Project</div><h3 class="proj-title">Tracea</h3></div>
+<p class="proj-text">A web app to document and share the stocks and assets you own.</p>
+<div class="proj-media"><div class="proj-img"><img src="images/ailab/tracea.webp" alt="Tracea: a woman in blue walking with a phone, with the headline Comienza a documentar tus inversiones" loading="lazy"></div></div>
+<a class="proj-arrow" href="https://tracea-flax.vercel.app/#/" target="_blank" rel="noopener" aria-label="Open Tracea"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</article>
+<article class="proj has-animation" data-delay="0">
+<div class="proj-head"><div class="proj-label">Project</div><h3 class="proj-title">Project name 2</h3></div>
 <p class="proj-text">[Short description of the project and the role AI played in it.]</p>
 <div class="proj-media"><div class="proj-img">Image or video</div></div>
 <span class="proj-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
 </article>
 <article class="proj has-animation" data-delay="0">
-<h3 class="proj-title">Project name 2</h3>
+<div class="proj-head"><div class="proj-label">Project</div><h3 class="proj-title">Project name 3</h3></div>
 <p class="proj-text">[Short description of the project and the role AI played in it.]</p>
 <div class="proj-media"><div class="proj-img">Image or video</div></div>
 <span class="proj-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
 </article>
 <article class="proj has-animation" data-delay="0">
-<h3 class="proj-title">Project name 3</h3>
-<p class="proj-text">[Short description of the project and the role AI played in it.]</p>
-<div class="proj-media"><div class="proj-img">Image or video</div></div>
-<span class="proj-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-</article>
-<article class="proj has-animation" data-delay="0">
-<h3 class="proj-title">Project name 4</h3>
+<div class="proj-head"><div class="proj-label">Project</div><h3 class="proj-title">Project name 4</h3></div>
 <p class="proj-text">[Short description of the project and the role AI played in it.]</p>
 <div class="proj-media"><div class="proj-img">Image or video</div></div>
 <span class="proj-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
