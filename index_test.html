@@ -31,24 +31,20 @@
 .impact-title{margin:0 0 16px;font-family:'basis_grotesque_promedium',sans-serif;font-weight:400;font-size:clamp(28px,3.1vw,48px);line-height:1.1;color:#222;text-align:left}
 .impact-sub{margin:0;max-width:600px;text-align:left;font-family:'basis_grotesque_proregular',sans-serif;text-transform:none}
 .impact-grid{flex:none;display:grid;grid-template-columns:repeat(3,200px);gap:10px}
-.impact-card{backface-visibility:hidden;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;justify-content:space-between;min-height:170px;padding:16px 16px 14px;border-radius:12px;background:#f5f4f1;color:#222;text-decoration:none;transition:background-color .35s ease}
+.impact-card{display:flex;flex-direction:column;justify-content:space-between;min-height:170px;padding:16px 16px 14px;border-radius:12px;background:#f5f4f1;color:#222;text-decoration:none;transition:background-color .35s ease}
 .impact-card:hover{background:#eadffd}
 .impact-num{font-family:'basis_grotesque_promedium',sans-serif;font-size:44px;line-height:1;letter-spacing:-.02em;color:#222;font-variant-numeric:tabular-nums}
 .impact-name{margin:0 0 14px;font-family:'basis_grotesque_promedium',sans-serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#777}
 .impact-label{margin:10px 0 0;font-family:'basis_grotesque_promedium',sans-serif;font-size:12px;line-height:1.35;color:#222;text-transform:none}
 .impact-text-sm{margin:10px 0 0;font-size:12px;line-height:1.45;color:#444;text-transform:none}.impact-text-sm strong{font-family:'basis_grotesque_promedium',sans-serif;font-weight:400;color:#222}
 .impact-proj{display:flex;justify-content:flex-end;margin-top:28px}
-.impact-arrow{position:relative;overflow:hidden;isolation:isolate;-webkit-mask-image:-webkit-radial-gradient(white,black);backface-visibility:hidden;display:block;width:40px;height:40px;border-radius:50%;background:#e9e7e2;transition:background-color .5s cubic-bezier(.22,1,.36,1)}
-.impact-arrow .arr{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:transform .5s cubic-bezier(.22,1,.36,1)}
-.impact-arrow .arr-1{color:#222}.impact-arrow .arr-2{color:#fff;transform:translateX(-150%)}
-.impact-card:hover .impact-arrow{background:#a67ff2}
-.impact-card:hover .impact-arrow .arr-1{transform:translateX(150%)}
-.impact-card:hover .impact-arrow .arr-2{transform:translateX(0)}
+.impact-arrow{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:#e9e7e2;color:#222;transition:background-color .35s ease,color .35s ease}
+.impact-card:hover .impact-arrow{background:#a67ff2;color:#fff}
 @media (max-width:1280px){.impact-grid{grid-template-columns:repeat(3,170px)}.impact-wrap{gap:32px}}
 @media (max-width:1100px){.impact-wrap{flex-direction:column;gap:32px}.impact-grid{width:100%;grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:767px){.content-row.impact-row{padding-top:120px}}
 @media (max-width:640px){.impact-grid{grid-template-columns:1fr}.impact-card{min-height:0;gap:18px}}
-@media (prefers-reduced-motion:reduce){.impact-card,.impact-arrow,.impact-arrow .arr{transition-duration:.01s!important}}
+@media (prefers-reduced-motion:reduce){.impact-card,.impact-arrow{transition-duration:.01s!important}}
 </style>
 </head>
 
@@ -372,19 +368,19 @@
 			<div class="impact-top"><div class="impact-name">ALDI Refresh</div>
 			<div class="impact-num" data-prefix="+" data-count="51" data-suffix="%">+51%</div>
 			<p class="impact-text-sm"><strong>Increase in engagement.</strong> The app became the leading digital channel.</p></div>
-			<div class="impact-proj"><span class="impact-arrow"><span class="arr arr-1"><svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="arr arr-2"><svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></div>
+			<div class="impact-proj"><span class="impact-arrow"><svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
 		</a>
 		<a class="impact-card ajax-link has-animation" data-type="page-transition" data-delay="120" href="caixabank.html">
 			<div class="impact-top"><div class="impact-name">CaixaBank New Business</div>
 			<div class="impact-num" data-prefix="+" data-count="30" data-suffix="%">+30%</div>
 			<p class="impact-text-sm"><strong>Increase in clicks</strong> thanks to A/B testing.</p></div>
-			<div class="impact-proj"><span class="impact-arrow"><span class="arr arr-1"><svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="arr arr-2"><svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></div>
+			<div class="impact-proj"><span class="impact-arrow"><svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
 		</a>
 		<a class="impact-card ajax-link has-animation" data-type="page-transition" data-delay="240" href="aldiplanner.html">
 			<div class="impact-top"><div class="impact-name">ALDI Planner</div>
 			<div class="impact-num" data-prefix="" data-count="60" data-suffix="K">60K</div>
 			<p class="impact-text-sm"><strong>Visits</strong> in the Christmas campaign, and 15% came back within a month.</p></div>
-			<div class="impact-proj"><span class="impact-arrow"><span class="arr arr-1"><svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="arr arr-2"><svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></div>
+			<div class="impact-proj"><span class="impact-arrow"><svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
 		</a>
 	</div></div>
 </div>
