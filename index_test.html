@@ -25,25 +25,25 @@
 
 <style>
 /* ===== Impact, in numbers ===== */
-.content-row.impact-row{padding-top:110px}
+.content-row.impact-row{padding-top:200px}
 .impact-wrap{display:flex;align-items:flex-start;justify-content:space-between;gap:48px}
 .impact-text{flex:1 1 auto;max-width:665px}
 .impact-title{margin:0 0 16px;font-family:'basis_grotesque_promedium',sans-serif;font-weight:400;font-size:clamp(28px,3.1vw,48px);line-height:1.1;color:#222;text-align:left}
-.impact-sub{margin:0;max-width:600px;text-align:left;font-family:'basis_grotesque_proregular',sans-serif;font-size:clamp(15px,1.25vw,18px);line-height:1.5;color:#555;text-transform:none}
+.impact-sub{margin:0;max-width:600px;text-align:left;font-family:'basis_grotesque_proregular',sans-serif;text-transform:none}
 .impact-grid{flex:none;display:grid;grid-template-columns:repeat(3,200px);gap:10px}
-.impact-card{display:flex;flex-direction:column;justify-content:space-between;min-height:260px;padding:16px 16px 14px;border-radius:12px;background:#efede8;color:#222;text-decoration:none;transition:background-color .35s ease,transform .5s cubic-bezier(.22,1,.36,1)}
-.impact-card:hover{background:#e7e4dd;transform:translateY(-3px)}
+.impact-card{display:flex;flex-direction:column;justify-content:space-between;min-height:170px;padding:16px 16px 14px;border-radius:12px;background:#f5f4f1;color:#222;text-decoration:none;transition:background-color .35s ease,transform .5s cubic-bezier(.22,1,.36,1)}
+.impact-card:hover{background:#eadffd;transform:translateY(-3px)}
 .impact-num{font-family:'basis_grotesque_promedium',sans-serif;font-size:36px;line-height:1;letter-spacing:-.02em;color:#222;font-variant-numeric:tabular-nums}
 .impact-name{margin:0 0 14px;font-family:'basis_grotesque_promedium',sans-serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#777}
 .impact-label{margin:10px 0 0;font-family:'basis_grotesque_promedium',sans-serif;font-size:12px;line-height:1.35;color:#222;text-transform:none}
-.impact-text-sm{margin:8px 0 0;font-size:11px;line-height:1.5;color:#555;text-transform:none}.impact-text-sm strong{font-family:'basis_grotesque_promedium',sans-serif;font-weight:400;color:#222}
-.impact-proj{display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:'basis_grotesque_promedium',sans-serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#222}
+.impact-text-sm{margin:10px 0 0;font-size:12px;line-height:1.45;color:#444;text-transform:none}.impact-text-sm strong{font-family:'basis_grotesque_promedium',sans-serif;font-weight:400;color:#222}
+.impact-proj{display:flex;align-items:center;justify-content:flex-end;gap:10px;font-family:'basis_grotesque_promedium',sans-serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#222}
 .impact-proj svg{flex:none;width:12px;height:12px;color:#222;transition:transform .45s cubic-bezier(.22,1,.36,1)}
 .impact-card:hover .impact-proj svg{transform:translateX(4px)}
 @media (max-width:1280px){.impact-grid{grid-template-columns:repeat(3,170px)}.impact-wrap{gap:32px}}
 @media (max-width:1100px){.impact-wrap{flex-direction:column;gap:32px}.impact-grid{width:100%;grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:767px){.content-row.impact-row{padding-top:80px}}
-@media (max-width:640px){.impact-grid{grid-template-columns:1fr}.impact-card{min-height:0;gap:22px}}
+@media (max-width:767px){.content-row.impact-row{padding-top:120px}}
+@media (max-width:640px){.impact-grid{grid-template-columns:1fr}.impact-card{min-height:0;gap:18px}}
 @media (prefers-reduced-motion:reduce){.impact-card,.impact-proj svg{transition-duration:.01s!important}}
 </style>
 </head>
@@ -367,23 +367,20 @@
 		<a class="impact-card ajax-link has-animation" data-type="page-transition" data-delay="0" href="aldirefresh.html">
 			<div class="impact-top"><div class="impact-name">ALDI Refresh</div>
 			<div class="impact-num" data-prefix="+" data-count="51" data-suffix="%">+51%</div>
-			<p class="impact-label">Increase in engagement</p>
-			<p class="impact-text-sm">Growth in app interactions and page views. <strong>The app became the leading channel for digital growth.</strong></p></div>
-			<div class="impact-proj"><span>View project</span><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+			<p class="impact-text-sm"><strong>Increase in engagement.</strong> The app became the leading digital channel.</p></div>
+			<div class="impact-proj"><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 		</a>
 		<a class="impact-card ajax-link has-animation" data-type="page-transition" data-delay="120" href="caixabank.html">
 			<div class="impact-top"><div class="impact-name">CaixaBank New Business</div>
 			<div class="impact-num" data-prefix="+" data-count="30" data-suffix="%">+30%</div>
-			<p class="impact-label">Increase in clicks</p>
-			<p class="impact-text-sm"><strong>A/B testing</strong> enables measurable <strong>improvements in conversion.</strong></p></div>
-			<div class="impact-proj"><span>View project</span><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+			<p class="impact-text-sm"><strong>Increase in clicks</strong> thanks to A/B testing.</p></div>
+			<div class="impact-proj"><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 		</a>
 		<a class="impact-card ajax-link has-animation" data-type="page-transition" data-delay="240" href="aldiplanner.html">
 			<div class="impact-top"><div class="impact-name">ALDI Planner</div>
 			<div class="impact-num" data-prefix="" data-count="60" data-suffix="K">60K</div>
-			<p class="impact-label">Visits in the Christmas campaign</p>
-			<p class="impact-text-sm">People didn't just pass by: <strong>they spent over a minute planning their menu</strong>, and 15% came back within a month.</p></div>
-			<div class="impact-proj"><span>View project</span><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+			<p class="impact-text-sm"><strong>Visits</strong> in the Christmas campaign, and 15% came back within a month.</p></div>
+			<div class="impact-proj"><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 		</a>
 	</div></div>
 </div>
