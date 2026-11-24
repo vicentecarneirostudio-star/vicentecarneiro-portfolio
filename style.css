@@ -4253,3 +4253,21 @@ El tamaño sale de la primera imagen (relacion 998/786); las demas se superponen
 @media (prefers-reduced-motion: reduce) {
     .fade-slide { transition-duration: .01s; }
 }
+
+/*--------------------------------------------------
+Línea final bajo el pie: web diseñada por una persona y construida con IA.
+Fondo transparente: toma el color de cada página. Versión para páginas claras
+(AI Lab y Archive llevan su propia versión en línea).
+---------------------------------------------------*/
+.ai-credit{position:relative;z-index:900;width:100%;box-sizing:border-box;margin:0;padding:22px 40px 30px;background:transparent;text-align:center;
+	font-family:'basis_grotesque_proregular',sans-serif;font-size:12px;line-height:1.7;letter-spacing:.06em;text-transform:uppercase;color:#777}
+.ai-credit span{display:inline}
+.ai-credit .hl{font-style:normal;color:#222}
+.ai-credit::before{content:"";position:absolute;top:0;left:80px;right:80px;height:1px;background:rgba(0,0,0,.14)}
+.ai-credit a{color:#222;text-decoration:none;white-space:nowrap;transition:opacity .25s ease}
+.ai-credit a:hover{opacity:.6}
+.ai-credit .sep{margin:0 .6em;color:#aaa}
+@media (max-width:1024px){.ai-credit{padding:20px 40px 28px}.ai-credit::before{left:40px;right:40px}}
+@media (max-width:767px){.ai-credit::before{left:24px;right:24px}
+	.ai-credit{padding:18px 24px 26px;font-size:11px;letter-spacing:.05em;text-wrap:balance}
+	.ai-credit .tools{display:block;margin-top:4px}}
