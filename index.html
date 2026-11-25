@@ -18,7 +18,7 @@
     <meta name="author" content="Vicente Carneiro">
     <meta charset="UTF-8" />
     <link rel="icon" type="image/ico" href="favicon.ico" />
-    <link href="style.css?v=4" rel="stylesheet" />
+    <link href="style.css?v=5" rel="stylesheet" />
     <link href="css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
@@ -335,6 +335,33 @@
 
 
 
+<!-- Impact, in numbers -->
+<div class="content-row impact-row row_padding_top row_padding_left row_padding_right row_padding_bottom full light-section" data-bgcolor="#fcfbf8">
+	<div class="impact-wrap"><div class="impact-text"><h2 class="has-mask impact-title">Impact, in numbers</h2>
+	<p class="impact-sub has-animation" data-delay="0">I design with the numbers in mind. Every decision is meant to move the business forward, and I measure its impact on KPIs.</p></div>
+	<div class="impact-grid" id="impact-grid">
+		<a class="impact-card ajax-link has-animation" data-type="page-transition" data-delay="0" href="aldirefresh.html">
+			<div class="impact-top"><div class="impact-name">ALDI Refresh</div>
+			<div class="impact-num" data-prefix="+" data-count="51" data-suffix="%">+51%</div>
+			<p class="impact-text-sm"><strong>Increase in engagement.</strong> The app became the leading digital channel.</p></div>
+			<div class="impact-proj"><span class="impact-arrow"><svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+		</a>
+		<a class="impact-card ajax-link has-animation" data-type="page-transition" data-delay="120" href="caixabank.html">
+			<div class="impact-top"><div class="impact-name">CaixaBank New Business</div>
+			<div class="impact-num" data-prefix="+" data-count="30" data-suffix="%">+30%</div>
+			<p class="impact-text-sm"><strong>Increase in clicks</strong> thanks to A/B testing.</p></div>
+			<div class="impact-proj"><span class="impact-arrow"><svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+		</a>
+		<a class="impact-card ajax-link has-animation" data-type="page-transition" data-delay="240" href="aldiplanner.html">
+			<div class="impact-top"><div class="impact-name">ALDI Planner</div>
+			<div class="impact-num" data-prefix="" data-count="60" data-suffix="K">60K</div>
+			<p class="impact-text-sm"><strong>Christmas campaign visits.</strong> 15% of users came back within a month.</p></div>
+			<div class="impact-proj"><span class="impact-arrow"><svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+		</a>
+	</div></div>
+</div>
+<!--/Impact, in numbers -->
+
 												<!-- Row -->
 												<div class="content-row row_padding_top row_padding_left row_padding_right full light-section" data-bgcolor="#fcfbf8">
 
@@ -536,6 +563,22 @@
     <script src="js/common.js"></script>
     <script src="js/contact.js"></script>
     <script src="js/scripts.js"></script>
+
+<script>
+(function(){
+  var nums=[].slice.call(document.querySelectorAll('.impact-num'));
+  if(!nums.length)return;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function run(el){
+    var end=+el.getAttribute('data-count'),pre=el.getAttribute('data-prefix')||'',suf=el.getAttribute('data-suffix')||'',t0=null,D=1500;
+    function step(t){if(t0===null)t0=t;var p=Math.min((t-t0)/D,1),e=1-Math.pow(1-p,3);el.textContent=pre+Math.round(end*e)+suf;if(p<1)requestAnimationFrame(step)}
+    el.textContent=pre+'0'+suf;requestAnimationFrame(step);
+  }
+  if(reduce||!('IntersectionObserver' in window))return;   /* sin movimiento: se queda el número final */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target)}})},{threshold:.6});
+  nums.forEach(function(n){io.observe(n)});
+})();
+</script>
 
 
 
