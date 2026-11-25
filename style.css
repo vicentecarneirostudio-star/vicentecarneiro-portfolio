@@ -4273,7 +4273,7 @@ Fondo transparente: toma el color de cada página. Versión para páginas claras
 	.ai-credit .tools{display:block;margin-top:4px}}
 
 /* ===== Impact, in numbers ===== */
-.content-row.impact-row{padding-top:200px}
+.content-row.impact-row{padding-top:200px;padding-bottom:20px}
 .impact-wrap{display:flex;align-items:flex-start;justify-content:space-between;gap:48px}
 .impact-text{flex:1 1 auto;max-width:665px}
 .impact-title{margin:0 0 16px;font-family:'basis_grotesque_promedium',sans-serif;font-weight:400;font-size:clamp(28px,3.1vw,48px);line-height:1.1;color:#222;text-align:left}
@@ -4293,3 +4293,6 @@ Fondo transparente: toma el color de cada página. Versión para páginas claras
 @media (max-width:767px){.content-row.impact-row{padding-top:120px}}
 @media (max-width:640px){.impact-grid{grid-template-columns:1fr}.impact-card{min-height:0;gap:18px}}
 @media (prefers-reduced-motion:reduce){.impact-card,.impact-arrow{transition-duration:.01s!important}}
+
+/* Evita la barra horizontal al final de la home: el marquee usa 100vw, que incluye el ancho de la barra vertical */
+#page-nav{overflow-x:clip}
