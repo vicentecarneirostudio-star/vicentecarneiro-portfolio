@@ -582,6 +582,10 @@
 
 
 
+<script>
+/* Sin desplazamiento lateral: el scroll suave a veces mide mal el ancho al cargar y deja arrastrar la pagina de lado */
+(function(){var n=0,t=setInterval(function(){var el=document.querySelector('[data-scrollbar]');var sb=el&&window.Scrollbar&&Scrollbar.get(el);if(sb){clearInterval(t);sb.addListener(function(s){if(s.offset.x!==0){sb.setPosition(0,s.offset.y,{withoutCallbacks:true});}});if(document.readyState==='complete'){sb.update();}else{window.addEventListener('load',function(){sb.update();});}}else if(++n>100){clearInterval(t);}},100);})();
+</script>
 </body>
 
 </html>
