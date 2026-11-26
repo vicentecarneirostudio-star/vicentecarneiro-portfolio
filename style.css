@@ -4296,3 +4296,7 @@ Fondo transparente: toma el color de cada página. Versión para páginas claras
 
 /* Evita la barra horizontal al final de la home: el marquee usa 100vw, que incluye el ancho de la barra vertical */
 #page-nav{overflow-x:clip}
+
+/* Prueba: sin scroll lateral en la barra del scroll suave */
+.scrollbar-track-x{display:none!important}
+[data-scrollbar] > .scroll-content{overflow-x:clip}
