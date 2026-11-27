@@ -68,7 +68,9 @@
 @media (prefers-reduced-motion:reduce){.proj-arrow,.proj-arrow .arr{transition-duration:.01s!important}.tool-more,.tool p,.tool-arrow{transition-duration:.01s!important;transition-delay:0s!important}}
 .big-h2{margin:0 0 22px;font-family:'basis_grotesque_promedium',sans-serif;font-weight:400;font-size:clamp(34px,5.2vw,84px);line-height:1.05;color:#fff}
 .sub-h4{margin:0 0 72px;max-width:760px;font-family:'basis_grotesque_proregular',sans-serif;font-weight:400;font-size:clamp(15px,1.35vw,20px);line-height:1.5;color:#a8a8a8}
-.ai-marquee{margin:clamp(40px,6vw,90px) 0 clamp(60px,8vw,120px);padding:20px 0;border-top:1px solid rgba(255,255,255,.22);border-bottom:1px solid rgba(255,255,255,.22);overflow:hidden}
+.ai-marquee{margin:0 0 clamp(60px,8vw,120px);padding:20px 0;border-top:1px solid rgba(255,255,255,.22);border-bottom:1px solid rgba(255,255,255,.22)}
+.ai-marquee-mask{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.proj-row.row_padding_top{padding-top:2vw!important}
 .proj-section-title{margin:0 0 56px;font-family:'basis_grotesque_promedium',sans-serif;font-weight:400;font-size:clamp(26px,3vw,44px);line-height:1.12;text-transform:uppercase;text-wrap:balance;color:#fff}
 .ai-marquee-track{display:flex;width:max-content;animation:ai-marquee 60s linear infinite;will-change:transform}
 .ai-marquee-group{display:flex;flex:none;align-items:center}
@@ -456,8 +458,8 @@ a.proj-arrow{text-decoration:none;cursor:pointer}
 </div>
 </div>
 
-<div class="content-row row_padding_top row_padding_left row_padding_right row_padding_bottom full dark-section" data-bgcolor="#171717">
-<div class="ai-marquee" role="heading" aria-level="2" aria-label="This website is made with AI"><div class="ai-marquee-track" aria-hidden="true"><div class="ai-marquee-group"><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span></div><div class="ai-marquee-group"><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span></div></div></div>
+<div class="content-row proj-row row_padding_top row_padding_left row_padding_right row_padding_bottom full dark-section" data-bgcolor="#171717">
+<div class="ai-marquee" role="heading" aria-level="2" aria-label="This website is made with AI"><div class="ai-marquee-mask"><div class="ai-marquee-track" aria-hidden="true"><div class="ai-marquee-group"><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span></div><div class="ai-marquee-group"><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span><span>This website is made with AI</span><span class="dot">·</span></div></div></div></div>
 <h2 class="has-mask proj-section-title">Below, the projects I am currently working on</h2>
 <div class="proj-list">
 <article class="proj has-animation" data-delay="0">
